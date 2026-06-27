@@ -1,1 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html
+    b:version='2'
+    class='v2'
+    expr:dir='data:blog.languageDirection'
+    expr:lang='data:blog.locale'
+    xmlns='http://www.w3.org/1999/xhtml'
+    xmlns:b='http://www.google.com/2005/gml/b'
+    xmlns:data='http://www.google.com/2005/gml/data'
+    xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+<head>
+
+    <meta charset='UTF-8'/>
+
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+
+    <title>
+        <data:view.title.escaped/>
+    </title>
+
+    <b:include data='blog' name='all-head-content'/>
+
+</head>
+
+<body>
+
+    <div id='outer-wrapper'>
+
+        <header id='header-wrapper'>
+
+            <h1>
+                <data:blog.title/>
+            </h1>
+
+        </header>
+
+        <main id='content-wrapper'>
+
+            <b:section
+                id='main'
+                class='main'
+                maxwidgets='1'
+                showaddelement='yes'>
+
+                <b:widget
+                    id='Blog1'
+                    type='Blog'
+                    title='Blog Posts'
+                    visible='true'/>
+
+            </b:section>
+
+        </main>
+
+        <footer id='footer-wrapper'>
+
+            <p>
+
+                Copyright ©
+
+                <data:blog.title/>
+
+            </p>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
