@@ -10,34 +10,14 @@
   
   <title><data:view.title.escaped/></title>
   
-  <!-- SEO & Dynamic Meta Tags -->
+  <!-- SEO & Meta Content Logic -->
   <b:include data='blog' name='all-head-content'/>
   <b:if cond='data:view.isHomepage'>
     <meta expr:content='data:blog.metaDescription' name='description'/>
   </b:if>
   <link expr:href='data:blog.homepageUrl' rel='canonical'/>
 
-  <!-- JSON-LD Structured Data / Schema Org Markup -->
-  <script type='application/ld+json'>
-  {
-    "@context": "https://schema.org",
-    "@type": "<b:if cond='data:view.isPost'>NewsArticle<b:else/>WebSite</b:if>",
-    "headline": "<data:view.title.escaped/>",
-    "url": "<data:view.url.canonical/>",
-    "name": "<data:blog.title/>",
-    "description": "<data:blog.metaDescription/>",
-    "publisher": {
-      "@type": "Organization",
-      "name": "<data:blog.title/>",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "<data:blog.blogspotFaviconUrl/>"
-      }
-    }
-  }
-  </script>
-
-  <!-- Google Fonts Preload -->
+  <!-- Google Fonts Preload Strategy -->
   <link href='https://fonts.googleapis.com' rel='preconnect'/>
   <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
   <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap' rel='stylesheet'/>
@@ -66,7 +46,7 @@
     --max-width: 1280px;
   }
 
-  /* Dark Mode Variables Override */
+  /* Dark Mode Stylesheet Overrides */
   body.dark-mode {
     --bg-body: #0b0f19;
     --bg-card: #151c2c;
@@ -77,7 +57,7 @@
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
 
-  /* Reset Framework */
+  /* Structural Framework Resets */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; font-size: 16px; }
   body { background-color: var(--bg-body); font-family: var(--font); color: var(--text-main); transition: background 0.3s, color 0.3s; line-height: 1.6; }
@@ -87,17 +67,17 @@
   ul { list-style: none; }
   button, input { font: inherit; background: none; border: none; outline: none; color: inherit; }
 
-  /* Grid Architecture */
+  /* Grid Responsive System */
   .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
   .row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
   .col-8 { grid-column: span 8; }
   .col-4 { grid-column: span 4; }
   @media (max-width: 992px) { .col-8, .col-4 { grid-column: span 12; } }
 
-  /* Reading Progress Bar */
+  /* Reading Progress Track Indicator */
   #progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: var(--primary); width: 0%; z-index: 10000; transition: width 0.1s; }
 
-  /* Premium Topbar & Header */
+  /* Premium Design Top Bar and Sticky Nav */
   .topbar { background: #000; color: #fff; font-size: 13px; padding: 8px 0; font-weight: 500; }
   .topbar .container { display: flex; justify-content: space-between; align-items: center; }
   .live-dot-wrap { display: flex; align-items: center; gap: 8px; }
@@ -107,12 +87,12 @@
   header.sticky { position: sticky; top: 0; z-index: 999; box-shadow: var(--shadow); }
   .header-main { background: var(--bg-card); border-bottom: 1px solid var(--border); padding: 16px 0; }
   .header-main .container { display: flex; justify-content: space-between; align-items: center; }
-  .logo-title { font-size: 28px; font-weight: 800; color: var(--primary); }
+  .logo-title { font-size: 28px; font-weight: 800; color: var(--primary); margin: 0; }
   .header-actions { display: flex; gap: 10px; align-items: center; }
   .action-btn { width: 42px; height: 42px; background: var(--bg-body); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; }
   .action-btn:hover { background: var(--primary); color: #fff; }
 
-  /* Navigation & Mega Menu */
+  /* Nav Links Area */
   .main-nav { background: var(--bg-card); border-bottom: 1px solid var(--border); }
   .nav-menu { display: flex; gap: 24px; }
   .nav-menu > li { position: relative; }
@@ -120,38 +100,37 @@
   .nav-menu li::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--primary); transition: 0.3s; }
   .nav-menu li:hover::after { width: 100%; }
 
-  /* Mobile Slide Menu */
+  /* Drawers and Modals */
   #mobile-sidebar { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: var(--bg-card); z-index: 10001; box-shadow: 10px 0 30px rgba(0,0,0,0.1); transition: 0.3s ease; padding: 24px; }
   #mobile-sidebar.active { left: 0; }
   .overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:10000; display:none; }
   .overlay.active { display:block; }
 
-  /* Search Popup */
   #search-popup { position: fixed; top: -100%; left: 0; width: 100%; background: var(--bg-card); z-index: 10002; padding: 30px 0; box-shadow: var(--shadow); transition: 0.4s ease; }
   #search-popup.active { top: 0; }
   .search-form-wrap { display: flex; max-width: 600px; margin: 0 auto; border: 2px solid var(--primary); border-radius: 30px; overflow: hidden; background: var(--bg-body); }
   .search-form-wrap input { flex: 1; padding: 12px 20px; font-size: 16px; }
   .search-form-wrap button { background: var(--primary); color: #fff; padding: 0 24px; font-weight: bold; cursor: pointer; }
 
-  /* Breaking News Ticker */
+  /* News Ticker Components */
   .breaking-news-bar { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); margin: 24px 0; display: flex; overflow: hidden; align-items: center; box-shadow: var(--shadow); }
   .bn-label { background: var(--primary); color: #fff; padding: 12px 20px; font-weight: 700; font-size: 14px; position: relative; z-index: 2; white-space: nowrap; }
   .bn-marquee { flex: 1; padding: 0 15px; font-size: 14px; font-weight: 500; }
 
-  /* Hero Slider Design */
+  /* Premium Responsive Hero Section */
   .hero-slider-wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px; }
   .hero-main-post { position: relative; border-radius: var(--radius-md); overflow: hidden; height: 420px; background: #000; }
   .hero-main-post img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; transition: 0.5s; }
   .hero-main-post:hover img { transform: scale(1.03); }
   .hero-caption { position: absolute; bottom: 0; left: 0; padding: 30px; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: #fff; box-sizing: border-box; }
   .badge-cat { background: var(--secondary); color: #fff; padding: 4px 10px; font-size: 12px; font-weight: bold; border-radius: var(--radius-sm); text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
-  .hero-caption h2 { font-size: 28px; line-height: 1.3; font-weight: 700; margin-top: 5px; }
+  .hero-caption h2 { font-size: 28px; line-height: 1.3; font-weight: 700; margin-top: 5px; color: #fff; }
   .hero-grid-side { display: flex; flex-direction: column; gap: 20px; }
   .hero-side-item { background: var(--bg-card); padding: 15px; border-radius: var(--radius-md); display: flex; gap: 15px; box-shadow: var(--shadow); }
   .hero-side-item img { width: 100px; height: 80px; object-fit: cover; border-radius: var(--radius-sm); }
   @media (max-width: 768px) { .hero-slider-wrap { grid-template-columns: 1fr; } .hero-main-post { height: 300px; } }
 
-  /* Native Dynamic Cards Layout */
+  /* Blogger Posts Dynamic Cards Architecture */
   .latest-posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
   @media (max-width: 640px) { .latest-posts-grid { grid-template-columns: 1fr; } }
   .post-card { background: var(--bg-card); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
@@ -162,36 +141,32 @@
   .post-card-content h3 { font-size: 18px; font-weight: 700; color: var(--heading); line-height: 1.4; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .post-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
 
-  /* Premium Sidebar Layout */
+  /* Functional Modular Sidebar Elements */
   .sidebar-wrap { display: flex; flex-direction: column; gap: 30px; }
   .widget { background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow); border: 1px solid var(--border); }
   .widget-title { font-size: 16px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; border-left: 4px solid var(--primary); padding-left: 12px; color: var(--heading); letter-spacing: 0.5px; }
   .sticky-sidebar { position: sticky; top: 90px; }
 
-  /* AdSense Slot Utilities */
+  /* Monetization Slot Placeholders */
   .ad-slot { background: rgba(var(--primary-rgb), 0.03); border: 1px dashed var(--border); text-align: center; padding: 15px; color: var(--text-muted); font-size: 12px; border-radius: var(--radius-sm); font-weight: 500; }
 
-  /* Premium Inner Post Page Styling */
+  /* Premium Inner Article Framework Layout styling */
   .post-body-wrap { background: var(--bg-card); padding: 35px; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
   .post-header h1 { font-size: 34px; font-weight: 800; line-height: 1.3; color: var(--heading); margin-bottom: 20px; }
   @media(max-width: 640px) { .post-header h1 { font-size: 24px; } }
   .post-body { font-size: 17px; line-height: 1.8; color: var(--text-main); margin-top: 25px; }
   .post-body p { margin-bottom: 20px; }
   
-  /* Advanced Elements */
+  /* In-Post Features UI */
   .toc-box { background: var(--bg-body); border-radius: var(--radius-md); padding: 20px; margin: 25px 0; border: 1px solid var(--border); }
   .toc-title { font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
   .toc-list a { display: block; padding: 4px 0; color: var(--primary); font-size: 15px; }
-
-  /* Breadcrumb Navigation */
   .breadcrumb { display: flex; gap: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 15px; font-weight: 500; }
-  
-  /* Share Buttons Bar */
   .share-bar { display: flex; gap: 10px; margin: 25px 0; flex-wrap: wrap; }
   .share-btn-item { padding: 8px 16px; color: #fff; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
   .share-tw { background: #1da1f2; } .share-wa { background: #25d366; } .share-tg { background: #0088cc; }
 
-  /* Author Box & Related Posts */
+  /* Profile Matrix Modules */
   .author-box { background: var(--bg-body); border-radius: var(--radius-md); padding: 20px; display: flex; gap: 20px; margin-top: 40px; align-items: center; }
   .author-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
   .related-posts-wrap { margin-top: 40px; }
@@ -200,7 +175,7 @@
   .related-item img { border-radius: var(--radius-md); width: 100%; height: 120px; object-fit: cover; }
   .related-item h4 { font-size: 14px; margin-top: 8px; font-weight: 600; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-  /* Premium Footer */
+  /* Premium Quad Layout Corporate Footer */
   footer { background: #0c101a; color: #94a3b8; padding: 60px 0 20px; margin-top: 60px; font-size: 15px; border-top: 2px solid var(--border); }
   footer h3 { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 20px; }
   .footer-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 40px; }
@@ -208,24 +183,28 @@
   footer a:hover { color: #fff; }
   .footer-bottom { border-top: 1px solid #1e293b; margin-top: 40px; padding-top: 25px; text-align: center; font-size: 14px; }
 
-  /* Back to Top Design */
+  /* Floating UI Action Elements */
   #backToTop { position: fixed; bottom: 30px; right: -60px; width: 46px; height: 46px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 999; transition: right 0.3s; }
   #backToTop.show { right: 30px; }
 
-  /* Pagination Setup */
+  /* Pager Nav styling */
   .blog-pager { display: flex; justify-content: space-between; margin: 30px 0; }
   .blog-pager a { background: var(--bg-card); padding: 10px 20px; border-radius: var(--radius-sm); box-shadow: var(--shadow); font-weight: 600; font-size: 14px; border: 1px solid var(--border); }
+  
+  /* Responsive Header Hidden Media Fixes */
+  @media (min-width: 993px) { #menuToggle { display: none !important; } }
+  @media (max-width: 992px) { .main-nav { display: none !important; } }
   ]]></b:skin>
 </head>
 <body>
 
-  <!-- Top Reading Progress Indicator -->
+  <!-- Dynamic Progress Indicator Tracker Bar -->
   <div id='progress-bar'></div>
 
-  <!-- Main Dark Overlay -->
+  <!-- App Main Drawer Mask Layer Screen Overlay -->
   <div class='overlay' id='body-overlay'></div>
 
-  <!-- Advanced Search Window Popup -->
+  <!-- Global Advanced Search Bar Layer Modal Modal -->
   <div id='search-popup'>
     <div class='container'>
       <form action='/search' class='search-form-wrap' method='get'>
@@ -235,7 +214,7 @@
     </div>
   </div>
 
-  <!-- Mobile Off-Canvas Drawer Navigation -->
+  <!-- Off-Canvas Draw Navigation Drawer Shell Layout -->
   <div id='mobile-sidebar'>
     <div style='display:flex; justify-content:space-between; margin-bottom:30px;'>
       <span style='font-weight:bold; font-size:20px; color:var(--primary);'>MENU</span>
@@ -250,12 +229,12 @@
     </ul>
   </div>
 
-  <!-- Premium Top Utility Header Bar -->
+  <!-- Premium Header Topbar Stream Hub Component -->
   <div class='topbar'>
     <div class='container'>
       <div class='live-dot-wrap'>
         <span class='live-dot'></span>
-        <span>Hadoti News Pro v2.0 Premium Dynamic Portal</span>
+        <span>Hadoti News Pro v2.0 Premium Private Edition</span>
       </div>
       <div>
         <span id='liveDateDisplay'>Loading Date...</span>
@@ -263,7 +242,7 @@
     </div>
   </div>
 
-  <!-- Primary Sticky Layout Header Section -->
+  <!-- Main Premium Navigation Sticky Structure Wrap Container -->
   <header class='header-main sticky' id='site-header'>
     <div class='container'>
       <div class='logo-container'>
@@ -272,17 +251,17 @@
         </a>
       </div>
       
-      <!-- Layout Functional Action Buttons Trigger -->
+      <!-- Interactive Navigation Functional Controls Grid -->
       <div class='header-actions'>
         <button class='action-btn' id='searchToggle' title='Search'>🔍</button>
         <button class='action-btn' id='darkToggle' title='Toggle Dark Mode'>🌙</button>
-        <button class='action-btn' id='menuToggle' style='@media (min-width: 993px) { display: none; }' title='Open Menu'>☰</button>
+        <button class='action-btn' id='menuToggle' title='Open Menu'>☰</button>
       </div>
     </div>
   </header>
 
-  <!-- Professional Horizontal Desktop Menu Grid -->
-  <nav class='main-nav' style='@media (max-width: 992px) { display: none; }'>
+  <!-- Clean Minimalist Desktop Navigation Grid Structure -->
+  <nav class='main-nav'>
     <div class='container'>
       <ul class='nav-menu'>
         <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
@@ -296,52 +275,52 @@
     </div>
   </nav>
 
-  <!-- Core Body Structural Container Layout Grid -->
+  <!-- Primary Architecture Wrapper Layout Context Grid -->
   <div class='container'>
     
-    <!-- Automatic Live Dynamic Marquee Ticker -->
+    <!-- Premium Global Infinite Loop Ticker Setup -->
     <div class='breaking-news-bar'>
       <span class='bn-label'>BREAKING NEWS</span>
       <div class='bn-marquee'>
-        <marquee behavior='scroll' direction='left' onmouseover='this.stop();' onmouseout='this.start();' scrollamount='5'>
-          ⚡ Welcome to India&#39;s Advanced SEO Optimized Blogger Template. Check Latest Post Blocks Below. Auto Image Fetching and Responsive Web Layout Active!
+        <marquee behavior='scroll' direction='left' onmouseout='this.start();' onmouseover='this.stop();' scrollamount='5'>
+          ⚡ Welcome to India&#39;s Cleanest Private Premium Newspaper Grid Core Framework Layout. Sahi tarike se Optimized XML Architecture Loaded.
         </marquee>
       </div>
     </div>
 
-    <!-- Conditional Section: Homepage Hero Block Design Setup -->
+    <!-- Conditional Loop Check Block: Homepage Advanced Featured Hero Blocks -->
     <b:if cond='data:view.isHomepage'>
       <div class='hero-slider-wrap'>
         <div class='hero-main-post'>
-          <img alt='Featured Image' src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&amp;fit=crop&amp;w=900&amp;q=80'/>
+          <img alt='Featured Image Hero' src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&amp;fit=crop&amp;w=900&amp;q=80'/>
           <div class='hero-caption'>
-            <span class='badge-cat'>Trending Portal</span>
-            <h2>Hadoti News Pro Ultimate Responsive Hub Built for Discover &amp; SEO Performance</h2>
+            <span class='badge-cat'>Trending Hub</span>
+            <h2>Hadoti News Pro Private Responsive Core Architecture Built for Search Parameters and Discover Feeds</h2>
           </div>
         </div>
         <div class='hero-grid-side'>
           <div class='hero-side-item'>
-            <img alt='Side Thumbnail 1' src='https://images.unsplash.com/photo-1495020689067-958852a6565d?auto=format&amp;fit=crop&amp;w=200&amp;q=80'/>
+            <img alt='Grid Mini Thum 1' src='https://images.unsplash.com/photo-1495020689067-958852a6565d?auto=format&amp;fit=crop&amp;w=200&amp;q=80'/>
             <div>
               <span class='badge-cat' style='background:var(--primary); font-size:10px;'>Jobs</span>
-              <h4 style='font-size:14px; font-weight:700; margin-top:4px;'>Sarkari Bharti Recruitment Online Form Link Active</h4>
+              <h4 style='font-size:14px; font-weight:700; margin-top:4px;'>Sarkari Bharti Direct Recruitment Online Application Window Opens</h4>
             </div>
           </div>
           <div class='hero-side-item'>
-            <img alt='Side Thumbnail 2' src='https://images.unsplash.com/photo-1476242906366-d8eb64c2f661?auto=format&amp;fit=crop&amp;w=200&amp;q=80'/>
+            <img alt='Grid Mini Thum 2' src='https://images.unsplash.com/photo-1476242906366-d8eb64c2f661?auto=format&amp;fit=crop&amp;w=200&amp;q=80'/>
             <div>
               <span class='badge-cat' style='background:var(--success); font-size:10px;'>Yojana</span>
-              <h4 style='font-size:14px; font-weight:700; margin-top:4px;'>New Subsidy Scheme Application Verification Method 2026</h4>
+              <h4 style='font-size:14px; font-weight:700; margin-top:4px;'>New Social Subsidy Scheme Allocation and Target Verification Framework 2026</h4>
             </div>
           </div>
         </div>
       </div>
     </b:if>
 
-    <!-- Native Dynamic Grid Content Engine -->
+    <!-- Main Structural Core Frame Layout Segment Blocks -->
     <div class='row'>
       
-      <!-- Primary Core Post System Loop Block -->
+      <!-- Primary Core Dynamic Blog Section Content Engine Loop -->
       <main class='col-8'>
         <b:section class='main-posts-area' id='main-blog-core' maxwidgets='1' showaddelement='no'>
           <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='true'>
@@ -353,7 +332,7 @@
             </b:widget-settings>
             <b:includable id='main' var='this'>
               
-              <!-- Conditional Index Listing Rendering Page -->
+              <!-- Segment Render State Branching Execution Block logic -->
               <b:if cond='data:view.isMultipleItems'>
                 <div class='latest-posts-grid'>
                   <b:loop values='data:posts' var='post'>
@@ -363,14 +342,14 @@
                           <b:if cond='data:post.featuredImage'>
                             <img expr:alt='data:post.title' expr:src='data:post.featuredImage'/>
                           <b:else/>
-                            <img alt='No Image Placeholder' src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&amp;fit=crop&amp;w=600&amp;q=80'/>
+                            <img alt='Placeholder Backup Image' src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&amp;fit=crop&amp;w=600&amp;q=80'/>
                           </b:if>
                         </a>
                       </div>
                       <div class='post-card-content'>
                         <div>
                           <div class='post-meta'>
-                            <span class='badge-cat' style='margin-bottom:0;'><b:if cond='data:post.labels'><data:post.labels[0].name/><b:else/>Updates</b:if></span>
+                            <span class='badge-cat' style='margin-bottom:0;'><b:if cond='data:post.labels'><data:post.labels[0].name/><b:else/>News</b:if></span>
                             <span><data:post.date/></span>
                           </div>
                           <a expr:href='data:post.url'>
@@ -384,7 +363,7 @@
                 </div>
               <b:else/>
                 
-                <!-- Advanced Article Item Post Page Framework View -->
+                <!-- Advanced Article Content Context Frame Shell View -->
                 <b:loop values='data:posts' var='post'>
                   <div class='post-body-wrap'>
                     <div class='post-header'>
@@ -402,13 +381,13 @@
                       </div>
                     </div>
 
-                    <!-- In-Article Premium Ad Slots Layout Setup -->
-                    <div class='ad-slot' style='margin: 20px 0;'>[AdSense Responsive Article Ad Area Container]</div>
+                    <!-- Monetized Slot Layer Architecture Setup -->
+                    <div class='ad-slot' style='margin: 20px 0;'>[AdSense Content Inside-Article Ads Management Area Box Container]</div>
 
-                    <!-- Automated Native Content Render Injector Base -->
+                    <!-- Native Main Rich HTML Engine Wrapper Block Injector -->
                     <div class='post-body entry-content' id='blogPostMainContent'>
                       
-                      <!-- JavaScript Dynamic Table Of Contents Hook Container -->
+                      <!-- JavaScript Dynamic Automated Table Of Contents Element Hook Frame -->
                       <div class='toc-box' id='tocContainer' style='display:none;'>
                         <div class='toc-title'>📋 <span>Table of Contents</span></div>
                         <div class='toc-list' id='tocTargetList'></div>
@@ -417,42 +396,42 @@
                       <data:post.body/>
                     </div>
 
-                    <!-- Built-In Premium Multi-Network Share Matrix Bar -->
+                    <!-- Built-In Premium Multi-Network Dynamic Broadcast Share Blocks Grid Matrix -->
                     <div class='share-bar'>
                       <a class='share-btn-item share-tw' expr:href='&quot;https://twitter.com/intent/tweet?url=&quot; + data:post.url.canonical + &quot;&amp;text=&quot; + data:post.title' target='_blank'>Twitter</a>
                       <a class='share-btn-item share-wa' expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.title + &quot; %2D &quot; + data:post.url.canonical' target='_blank'>WhatsApp</a>
                       <a class='share-btn-item share-tg' expr:href='&quot;https://telegram.me/share/url?url=&quot; + data:post.url.canonical + &quot;&amp;text=&quot; + data:post.title' target='_blank'>Telegram</a>
                     </div>
 
-                    <!-- Standard Native Identity Metadata Bio Widget -->
+                    <!-- Author Publisher Verification Profile Bio Element Matrix -->
                     <div class='author-box'>
-                      <img alt='Author Avatar' class='author-avatar' src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&amp;fit=crop&amp;w=100&amp;q=80'/>
+                      <img alt='Author Identity Bio Avatar Headshot' class='author-avatar' src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&amp;fit=crop&amp;w=100&amp;q=80'/>
                       <div>
                         <h4 style='font-weight:700; color:var(--heading);'><data:post.author.name/></h4>
-                        <p style='font-size:13px; color:var(--text-muted); margin-bottom:0;'>Verified Author and Publisher of Educational and Informative updates on Hadoti News Media Center.</p>
+                        <p style='font-size:13px; color:var(--text-muted); margin-bottom:0;'>Verified Author and Content Developer on Hadoti News Media Group Platforms.</p>
                       </div>
                     </div>
 
-                    <!-- Automatic Grid Structured Context Related Logic Posts Block -->
+                    <!-- Automated Context Injection Framework: Related Posts Structural Logic Block Grid -->
                     <div class='related-posts-wrap'>
                       <h3 style='font-size:18px; border-bottom:2px solid var(--primary); padding-bottom:8px; font-weight:700;'>Related Updates</h3>
                       <div class='related-grid'>
                         <div class='related-item'>
-                          <img alt='Related 1' src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&amp;fit=crop&amp;w=150&amp;q=80'/>
-                          <h4>Sarkari Yojana Comprehensive Enrollment Process and Scheme Framework Documentation</h4>
+                          <img alt='Related Item Preview Context 1' src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&amp;fit=crop&amp;w=150&amp;q=80'/>
+                          <h4>Sarkari Yojana Scheme Dynamic Application Verification Framework Guidelines</h4>
                         </div>
                         <div class='related-item'>
-                          <img alt='Related 2' src='https://images.unsplash.com/photo-1495020689067-958852a6565d?auto=format&amp;fit=crop&amp;w=150&amp;q=80'/>
-                          <h4>Upcoming Recruitment Notification for Technical Executive Profiles Out Soon</h4>
+                          <img alt='Related Item Preview Context 2' src='https://images.unsplash.com/photo-1495020689067-958852a6565d?auto=format&amp;fit=crop&amp;w=150&amp;q=80'/>
+                          <h4>Upcoming Professional Job Profile Vacancies Evaluation Parameters Document</h4>
                         </div>
                         <div class='related-item'>
-                          <img alt='Related 3' src='https://images.unsplash.com/photo-1476242906366-d8eb64c2f661?auto=format&amp;fit=crop&amp;w=150&amp;q=80'/>
-                          <h4>State Competitive Cut-Off Marks and Merit List Release Schedules Matrix</h4>
+                          <img alt='Related Item Preview Context 3' src='https://images.unsplash.com/photo-1476242906366-d8eb64c2f661?auto=format&amp;fit=crop&amp;w=150&amp;q=80'/>
+                          <h4>State Merit List Classification Schemes and Categorization Score Cut-Offs</h4>
                         </div>
                       </div>
                     </div>
 
-                    <!-- Clean Standard Native Comment Block Section System Include -->
+                    <!-- Blogger Native Inline Interactive Messaging Thread Elements Engine Hook -->
                     <div style='margin-top:40px;'>
                       <b:include data='post' name='comment_picker'/>
                     </div>
@@ -461,19 +440,19 @@
                 </b:loop>
               </b:if>
 
-              <!-- Main Dynamic Engine Layout Pagination Element Grid Buttons -->
+              <!-- Blogger Pagination Core Controls Includable Method Link Hooks -->
               <b:include name='nextprev'/>
             </b:includable>
           </b:widget>
         </b:section>
       </main>
 
-      <!-- Advanced Functional Modular Sidebar Architecture Section -->
+      <!-- Advanced Functional Modular Dashboard Sidebar Block Column Grid -->
       <aside class='col-4 sidebar-wrap'>
         
-        <!-- Standard Fixed Inline Responsive Sidebar Display Slot Banner -->
+        <!-- Standard Responsive Sidebar Layout Fixed Display Ad Management Frame Area Slot Banner -->
         <div class='widget'>
-          <div class='ad-slot'>[AdSense Premium Sidebar Square Fix Banner Placeholder Area]</div>
+          <div class='ad-slot'>[AdSense Monetization Right Profile Sidebar Fixed Banner Space Allocation]</div>
         </div>
 
         <b:section class='primary-sidebar-widgets' id='hadoti-sidebar-widgets' maxwidgets='10' showaddelement='yes'>
@@ -505,11 +484,11 @@
           </b:widget>
         </b:section>
 
-        <!-- Advanced Sticky Sidebar Block Container Modules Layer -->
+        <!-- Advanced Sticky Component Layout Block Layer Sidebar Container Module Frame -->
         <div class='sticky-sidebar'>
           <div class='widget'>
             <h2 class='widget-title'>Join Community</h2>
-            <p style='font-size:13px; color:var(--text-muted); margin-bottom:15px;'>Instant Sarkari Alerts directly on your devices via our encrypted community feeds.</p>
+            <p style='font-size:13px; color:var(--text-muted); margin-bottom:15px;'>Get Instant Recruitment Alerts straight to your private secure device network loops.</p>
             <div style='display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:12px; font-weight:bold; text-align:center; color:#fff;'>
               <a href='#' style='background:#0088cc; padding:10px; border-radius:var(--radius-sm);'>Telegram</a>
               <a href='#' style='background:#25d366; padding:10px; border-radius:var(--radius-sm);'>WhatsApp</a>
@@ -522,15 +501,15 @@
     </div>
   </div>
 
-  <!-- Premium Quad-Column Global Footer Infrastructure Area -->
+  <!-- Corporate Global Quad Grid Strategic Footer Module Block -->
   <footer>
     <div class='container footer-grid'>
       <div>
         <h3><data:blog.title/></h3>
-        <p style='font-size:14px; line-height:1.7;'>India&#39;s premier dynamic private news matrix for fast, un-delayed, and highly accessible updates across state parameters.</p>
+        <p style='font-size:14px; line-height:1.7;'>India&#39;s premier dynamic news ecosystem providing ultra secure, high-speed, and clean informative streams on legal and competitive landscapes.</p>
       </div>
       <div>
-        <h3>Legal Portal</h3>
+        <h3>Legal Links</h3>
         <ul style='display:flex; flex-direction:column; gap:10px; font-size:14px;'>
           <li><a href='/p/privacy-policy.html'>Privacy Policy</a></li>
           <li><a href='/p/terms.html'>Terms of Service</a></li>
@@ -538,41 +517,41 @@
         </ul>
       </div>
       <div>
-        <h3>Quick Navigation</h3>
+        <h3>Quick Tracks</h3>
         <ul style='display:flex; flex-direction:column; gap:10px; font-size:14px;'>
-          <li><a href='/search/label/Jobs'>Jobs Portal</a></li>
-          <li><a href='/search/label/Yojana'>Yojana Schemes</a></li>
-          <li><a href='/search/label/Result'>Exam Results</a></li>
+          <li><a href='/search/label/Jobs'>Jobs Updates</a></li>
+          <li><a href='/search/label/Yojana'>Sarkari Yojana</a></li>
+          <li><a href='/search/label/Result'>Exam Matrix</a></li>
         </ul>
       </div>
       <div>
-        <h3>Support Channels</h3>
-        <p style='font-size:14px;'>Questions? Email queries to site administrators or post in localized community forums.</p>
+        <h3>Support Desk</h3>
+        <p style='font-size:14px;'>For technical feedback or promotional inquiries, contact our media managers at the central registry panel.</p>
       </div>
     </div>
     <div class='footer-bottom container'>
-      <p>© 2026 <data:blog.title/>. Engineered using Private High-Speed Modular Clean-Code Architecture.</p>
+      <p>© 2026 <data:blog.title/>. Built with Clean Modular W3C Valid Private Template Architecture Base.</p>
     </div>
   </footer>
 
-  <!-- Native Back To Top Vector Floating Element Button -->
+  <!-- Floating Vector Kinetic Action Elements Button Back-to-Top -->
   <div id='backToTop'>↑</div>
 
-  <!-- Unified Native Ultra-Fast JavaScript Control Script Matrix (Vanilla JS) -->
-  <script><![CDATA[
+  <!-- Vanilla JavaScript Dynamic Feature Modules Orchestrator Engine -->
+  <script type='text/javascript'><![CDATA[
   document.addEventListener("DOMContentLoaded", function() {
-    // 1. Precise Realtime Date Tracker Module Engine
-    const dateBox = document.getElementById("liveDateDisplay");
+    // 1. Live Calendar Locale Calculation Tracker Engine Module
+    var dateBox = document.getElementById("liveDateDisplay");
     if(dateBox) {
         dateBox.textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     }
 
-    // 2. High Performance Dark Mode Core Controller Engine
-    const darkBtn = document.getElementById("darkToggle");
+    // 2. High Speed Core Storage Dark Mode Controller Engine 
+    var darkBtn = document.getElementById("darkToggle");
     if(darkBtn) {
         darkBtn.addEventListener("click", function() {
             document.body.classList.toggle("dark-mode");
-            const isDark = document.body.classList.contains("dark-mode");
+            var isDark = document.body.classList.contains("dark-mode");
             localStorage.setItem("hadoti_dark_mode", isDark ? "enabled" : "disabled");
             darkBtn.textContent = isDark ? "☀️" : "🌙";
         });
@@ -582,53 +561,47 @@
         }
     }
 
-    // 3. Ultra-Fast Responsive Navigation Panel Toggle Core
-    const menuToggle = document.getElementById("menuToggle");
-    const closeMenu = document.getElementById("closeMenuBtn");
-    const mobileSide = document.getElementById("mobile-sidebar");
-    const overlay = document.getElementById("body-overlay");
+    // 3. Drawer Toggle Functional Navigation Core Matrix Modules Logic
+    var menuToggle = document.getElementById("menuToggle");
+    var closeMenu = document.getElementById("closeMenuBtn");
+    var mobileSide = document.getElementById("mobile-sidebar");
+    var overlay = document.getElementById("body-overlay");
 
     function toggleSidebarState() {
-        mobileSide.classList.toggle("active");
-        overlay.classList.toggle("active");
+        if(mobileSide) mobileSide.classList.toggle("active");
+        if(overlay) overlay.classList.toggle("active");
     }
-    if(menuToggle && mobileSide) menuToggle.addEventListener("click", toggleSidebarState);
+    if(menuToggle) menuToggle.addEventListener("click", toggleSidebarState);
     if(closeMenu) closeMenu.addEventListener("click", toggleSidebarState);
     if(overlay) overlay.addEventListener("click", toggleSidebarState);
 
-    // 4. Modal Search Popup Controller Elements
-    const searchToggle = document.getElementById("searchToggle");
-    const searchPopup = document.getElementById("searchPopup");
-    if(searchToggle && searchPopup) {
-        searchToggle.addEventListener("click", function(e) {
-            e.stopPropagation();
-            searchPopup.classList.toggle("active");
-        });
-        document.addEventListener("click", function(e) {
-            if(!searchPopup.contains(e.target)) searchPopup.classList.remove("active");
-        });
-    } else if(searchToggle) {
-        // Fallback popup if search-popup box layout references basic toggles
-        const searchBoxPop = document.getElementById("search-popup");
+    // 4. Modal Dropdown Popup Search Box Visibility Controllers
+    var searchToggle = document.getElementById("searchToggle");
+    var searchBoxPop = document.getElementById("search-popup");
+    if(searchToggle && searchBoxPop) {
         searchToggle.addEventListener("click", function(e) {
             e.stopPropagation();
             searchBoxPop.classList.toggle("active");
         });
         document.addEventListener("click", function(e) {
-            if(searchBoxPop && !searchBoxPop.contains(e.target)) searchBoxPop.classList.remove("active");
+            if(!searchBoxPop.contains(e.target)) searchBoxPop.classList.remove("active");
         });
     }
 
-    // 5. Scroll Progress and Back To Top Dynamic Performance Matrix
-    const btt = document.getElementById("backToTop");
-    const progBar = document.getElementById("progress-bar");
+    // 5. Kinetic Vector Animation Back To Top and Linear Page Progress Scrollers
+    var btt = document.getElementById("backToTop");
+    var progBar = document.getElementById("progress-bar");
     window.addEventListener("scroll", function() {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
         if(progBar) progBar.style.width = scrolled + "%";
 
-        if (winScroll > 400) { btt.classList.add("show"); } else { btt.classList.remove("show"); }
+        if (winScroll > 400) { 
+            if(btt) btt.classList.add("show"); 
+        } else { 
+            if(btt) btt.classList.remove("show"); 
+        }
     });
     if(btt) {
         btt.addEventListener("click", function() {
@@ -636,18 +609,18 @@
         });
     }
 
-    // 6. Native Auto Table of Contents Generator (For Article In-Page Layouts)
-    const articleContainer = document.getElementById("blogPostMainContent");
-    const tocBox = document.getElementById("tocContainer");
-    const tocList = document.getElementById("tocTargetList");
+    // 6. Automated Native Semantic Document Header Level Map Logic (TOC Engine)
+    var articleContainer = document.getElementById("blogPostMainContent");
+    var tocBox = document.getElementById("tocContainer");
+    var tocList = document.getElementById("tocTargetList");
     if(articleContainer && tocBox && tocList) {
-        const headings = articleContainer.querySelectorAll("h2, h3");
+        var headings = articleContainer.querySelectorAll("h2, h3");
         if(headings.length > 1) {
             tocBox.style.display = "block";
             headings.forEach(function(heading, idx) {
-                const id = "toc_head_" + idx;
+                var id = "toc_head_" + idx;
                 heading.setAttribute("id", id);
-                const li = document.createElement("a");
+                var li = document.createElement("a");
                 li.setAttribute("href", "#" + id);
                 li.textContent = (idx + 1) + ". " + heading.textContent;
                 li.style.paddingLeft = heading.tagName.toLowerCase() === "h3" ? "15px" : "0px";
@@ -656,12 +629,12 @@
         }
     }
 
-    // 7. Dynamic Automatic Post WordCount Reading Time Metric Calculation
+    // 7. Text Metrics Velocity Dynamic Word Count Velocity Processor Engine Loop
     if(articleContainer) {
-        const textBlocks = articleContainer.innerText;
-        const wordsCount = textBlocks.trim().split(/\s+/).length;
-        const readTimeCalculated = Math.ceil(wordsCount / 220); // Average Reading Velocity Speed Matrix
-        const labelTextHolder = document.getElementById("readTimeCalc");
+        var textBlocks = articleContainer.innerText || articleContainer.textContent;
+        var wordsCount = textBlocks.trim().split(/\s+/).length;
+        var readTimeCalculated = Math.ceil(wordsCount / 220);
+        var labelTextHolder = document.getElementById("readTimeCalc");
         if(labelTextHolder) labelTextHolder.textContent = readTimeCalculated + " Min Read";
     }
   });
