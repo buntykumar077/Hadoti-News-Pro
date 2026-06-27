@@ -1263,6 +1263,69 @@ grid-template-columns:1fr;
 }
 
 }
+  /*==========================================================
+LATEST POSTS
+==========================================================*/
+
+#latest-posts-section{
+
+padding:60px 0;
+
+}
+
+.latest-posts-wrap{
+
+background:#fff;
+
+padding:30px;
+
+border-radius:16px;
+
+box-shadow:var(--shadow);
+
+}
+
+.latest-posts .post{
+
+padding:20px;
+
+border-bottom:1px solid var(--border);
+
+}
+
+.latest-posts .post:last-child{
+
+border-bottom:none;
+
+}
+
+.latest-posts img{
+
+border-radius:12px;
+
+}
+
+.latest-posts h3{
+
+font-size:22px;
+
+margin-top:10px;
+
+}
+
+.latest-posts p{
+
+color:var(--text-light);
+
+}
+
+.latest-posts a{
+
+color:var(--primary);
+
+font-weight:600;
+
+}
 ]]></b:skin>
 
 </head>
@@ -1636,6 +1699,55 @@ CET Admit Card Download
 </div>
 
 </section>
+  <!--==========================================================
+LATEST POSTS
+===========================================================-->
+
+<section id='latest-posts-section'>
+
+<div class='container'>
+
+<div class='section-heading'>
+
+<h2>
+
+Latest Updates
+
+</h2>
+
+<a expr:href='data:blog.homepageUrl'>
+
+View All →
+
+</a>
+
+</div>
+
+<div class='latest-posts-wrap'>
+
+<b:section
+id='LatestPosts'
+class='latest-posts'
+maxwidgets='1'
+showaddelement='yes'>
+
+<b:widget
+id='BlogLatest'
+type='Blog'
+title='Latest Posts'
+visible='true'/>
+
+</b:section>
+
+</div>
+
+</div>
+
+</section>
+
+<!--==========================================================
+END LATEST POSTS
+===========================================================-->
 <!-- ==========================================================
      HEADER START
 =========================================================== -->
