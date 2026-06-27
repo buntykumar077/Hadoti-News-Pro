@@ -1017,7 +1017,81 @@ END OF FOUNDATION
 <!-- ==========================================================
      MAIN CONTENT START
 =========================================================== -->
+<!--==========================================================
+HERO SECTION START
+===========================================================-->
 
+<section id='hero-section'>
+
+  <div class='container'>
+
+    <div class='row'>
+
+      <!-- Featured Slider -->
+
+      <div class='col-8'>
+
+        <b:section
+            id='featuredSlider'
+            class='featured-slider'
+            maxwidgets='1'
+            showaddelement='yes'/>
+
+      </div>
+
+      <!-- Hero Sidebar -->
+
+      <div class='col-4'>
+
+        <b:section
+            id='heroSidebar'
+            class='hero-sidebar'
+            maxwidgets='2'
+            showaddelement='yes'/>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!--==========================================================
+BREAKING NEWS
+===========================================================-->
+
+<section id='breaking-news'>
+
+  <div class='container'>
+
+    <div class='breaking-wrap'>
+
+      <span class='breaking-title'>
+
+        Breaking News
+
+      </span>
+
+      <div class='breaking-content'>
+
+        <b:section
+            id='breakingNews'
+            class='breaking-news'
+            maxwidgets='1'
+            showaddelement='yes'/>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!--==========================================================
+HERO SECTION END
+===========================================================-->
 <div id='content-wrapper'>
 
   <div class='container'>
