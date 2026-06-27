@@ -1014,7 +1014,57 @@ END OF FOUNDATION
   </nav>
 
 </header>
+<!-- ==========================================================
+     MAIN CONTENT START
+=========================================================== -->
 
+<div id='content-wrapper'>
+
+  <div class='container'>
+
+    <div class='row'>
+
+      <!-- Main Content -->
+
+      <main id='main-wrapper' class='col-8'>
+
+        <b:section
+            id='main'
+            class='main'
+            maxwidgets='1'
+            showaddelement='yes'>
+
+          <b:widget
+              id='Blog1'
+              type='Blog'
+              title='Blog Posts'
+              visible='true'/>
+
+        </b:section>
+
+      </main>
+
+      <!-- Sidebar -->
+
+      <aside id='sidebar-wrapper' class='col-4'>
+
+        <b:section
+            id='sidebar'
+            class='sidebar'
+            maxwidgets='20'
+            showaddelement='yes'/>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ==========================================================
+     MAIN CONTENT END
+=========================================================== -->
 <!-- ==========================================================
      HEADER END
 =========================================================== -->
