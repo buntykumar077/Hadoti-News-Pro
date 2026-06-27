@@ -620,7 +620,264 @@ padding:0 15px;
 }
 
 }
+/*==========================================================
+HEADER
+==========================================================*/
 
+#site-header{
+
+background:#fff;
+
+position:sticky;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+z-index:9999;
+
+box-shadow:0 2px 12px rgba(0,0,0,.08);
+
+}
+
+/*==========================
+TOP BAR
+==========================*/
+
+.topbar{
+
+background:var(--primary);
+
+color:#fff;
+
+font-size:14px;
+
+padding:8px 0;
+
+}
+
+.topbar-left,
+.topbar-right{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+}
+
+.live-dot{
+
+width:10px;
+
+height:10px;
+
+background:#ff0000;
+
+border-radius:50%;
+
+animation:liveBlink 1s infinite;
+
+}
+
+@keyframes liveBlink{
+
+0%{opacity:1;}
+
+50%{opacity:.3;}
+
+100%{opacity:1;}
+
+}
+
+/*==========================
+HEADER MAIN
+==========================*/
+
+.header-main{
+
+background:#fff;
+
+padding:18px 0;
+
+}
+
+.logo-title{
+
+font-size:32px;
+
+font-weight:800;
+
+color:var(--primary);
+
+margin:0;
+
+}
+
+.logo-tagline{
+
+font-size:14px;
+
+color:var(--text-light);
+
+margin-top:4px;
+
+}
+
+/*==========================
+HEADER BUTTONS
+==========================*/
+
+.header-actions{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.header-actions button{
+
+width:44px;
+
+height:44px;
+
+border-radius:50%;
+
+background:#f5f5f5;
+
+cursor:pointer;
+
+transition:var(--transition);
+
+font-size:18px;
+
+}
+
+.header-actions button:hover{
+
+background:var(--primary);
+
+color:#fff;
+
+}
+
+/*==========================
+NAVIGATION
+==========================*/
+
+.main-nav{
+
+background:#ffffff;
+
+border-top:1px solid var(--border);
+
+border-bottom:1px solid var(--border);
+
+}
+
+.nav-menu{
+
+display:flex;
+
+align-items:center;
+
+gap:28px;
+
+}
+
+.nav-menu li{
+
+position:relative;
+
+}
+
+.nav-menu a{
+
+display:block;
+
+padding:16px 0;
+
+font-size:15px;
+
+font-weight:600;
+
+transition:var(--transition);
+
+}
+
+.nav-menu a:hover{
+
+color:var(--primary);
+
+}
+
+.nav-menu li::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:0;
+
+width:0;
+
+height:3px;
+
+background:var(--primary);
+
+transition:.3s;
+
+}
+
+.nav-menu li:hover::after{
+
+width:100%;
+
+}
+
+/*==========================
+RESPONSIVE HEADER
+==========================*/
+
+@media(max-width:992px){
+
+.nav-menu{
+
+display:none;
+
+}
+
+.logo-title{
+
+font-size:26px;
+
+}
+
+.mobile-btn{
+
+display:inline-flex;
+
+}
+
+}
+
+@media(min-width:993px){
+
+.mobile-btn{
+
+display:none;
+
+}
+
+}
 /*==========================================================
 END OF FOUNDATION
 ==========================================================*/
@@ -632,3 +889,132 @@ END OF FOUNDATION
 <body>
 
 <div id='outer-wrapper'>
+<!-- ==========================================================
+     HEADER START
+=========================================================== -->
+
+<header id='site-header'>
+
+  <!-- Top Bar -->
+  <div class='topbar'>
+
+    <div class='container d-flex justify-between align-center'>
+
+      <div class='topbar-left'>
+
+        <span class='live-dot'></span>
+
+        <span class='live-text'>
+          Live Updates
+        </span>
+
+      </div>
+
+      <div class='topbar-right'>
+
+        <span id='current-date'>
+          Loading...
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Main Header -->
+  <div class='header-main'>
+
+    <div class='container d-flex justify-between align-center'>
+
+      <!-- Logo -->
+
+      <div class='logo-wrap'>
+
+        <a expr:href='data:blog.homepageUrl'>
+
+          <h1 class='logo-title'>
+
+            <data:blog.title/>
+
+          </h1>
+
+        </a>
+
+        <p class='logo-tagline'>
+
+          Latest News • Jobs • Yojana • Results
+
+        </p>
+
+      </div>
+
+      <!-- Header Buttons -->
+
+      <div class='header-actions'>
+
+        <button
+        class='search-btn'
+        aria-label='Search'>
+
+        🔍
+
+        </button>
+
+        <button
+        class='dark-btn'
+        aria-label='Dark Mode'>
+
+        🌙
+
+        </button>
+
+        <button
+        class='mobile-btn'
+        aria-label='Menu'>
+
+        ☰
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Navigation -->
+
+  <nav class='main-nav'>
+
+    <div class='container'>
+
+      <ul class='nav-menu'>
+
+        <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
+
+        <li><a href='/search/label/Latest'>Latest</a></li>
+
+        <li><a href='/search/label/Jobs'>Jobs</a></li>
+
+        <li><a href='/search/label/Yojana'>Yojana</a></li>
+
+        <li><a href='/search/label/Admit%20Card'>Admit Card</a></li>
+
+        <li><a href='/search/label/Result'>Result</a></li>
+
+        <li><a href='/search/label/Scholarship'>Scholarship</a></li>
+
+        <li><a href='/p/contact.html'>Contact</a></li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+</header>
+
+<!-- ==========================================================
+     HEADER END
+=========================================================== -->
