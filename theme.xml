@@ -329,11 +329,167 @@ color:#fff;
 
 }
 ]]></b:skin>
+/*============================
+HEADER
+=============================*/
 
+.site-header{
+
+background:#fff;
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.header-wrap{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+height:70px;
+
+}
+
+.logo-area h1{
+
+font-size:28px;
+
+font-weight:700;
+
+color:var(--primary-color);
+
+}
+
+.desktop-menu ul{
+
+display:flex;
+
+gap:25px;
+
+list-style:none;
+
+}
+
+.desktop-menu a{
+
+font-weight:600;
+
+}
+
+.header-icons{
+
+display:flex;
+
+gap:12px;
+
+}
+
+.header-icons button{
+
+width:42px;
+
+height:42px;
+
+border:none;
+
+background:#f4f4f4;
+
+border-radius:50%;
+
+cursor:pointer;
+
+font-size:18px;
+
+}
+
+@media(max-width:992px){
+
+.desktop-menu{
+
+display:none;
+
+}
+
+}
 </head>
 
 <body>
+<!--==========================
+    HEADER START
+===========================-->
 
+<header class='site-header'>
+
+<div class='container header-wrap'>
+
+<div class='logo-area'>
+
+<a expr:href='data:blog.homepageUrl'>
+
+<h1><data:blog.title/></h1>
+
+</a>
+
+</div>
+
+<nav class='desktop-menu'>
+
+<ul>
+
+<li><a expr:href='data:blog.homepageUrl'>Home</a></li>
+
+<li><a href='/search/label/Latest'>Latest</a></li>
+
+<li><a href='/search/label/Yojana'>Yojana</a></li>
+
+<li><a href='/search/label/Jobs'>Jobs</a></li>
+
+<li><a href='/search/label/Results'>Results</a></li>
+
+<li><a href='/p/contact.html'>Contact</a></li>
+
+</ul>
+
+</nav>
+
+<div class='header-icons'>
+
+<button id='darkToggle'>
+
+🌙
+
+</button>
+
+<button id='searchToggle'>
+
+🔍
+
+</button>
+
+<button id='mobileMenu'>
+
+☰
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+<!--==========================
+HEADER END
+===========================-->
     <div id='outer-wrapper'>
 <header id='header'>
 
