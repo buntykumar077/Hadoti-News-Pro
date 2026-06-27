@@ -1278,7 +1278,124 @@ alert("Search Popup will be added in Module 4");
 ]]></script>
 <body>
 
-<div id='outer-wrapper'>
+<div id='outer-wrapper'><!-- ==========================================
+Breaking News
+========================================== -->
+
+<section class='breaking-news'>
+
+<div class='container breaking-wrap'>
+
+<div class='breaking-title'>
+
+Breaking News
+
+</div>
+
+<div class='breaking-marquee'>
+
+<marquee
+behavior='scroll'
+direction='left'
+scrollamount='5'>
+
+Welcome to Hadoti News Pro Premium Blogger Template.
+
+Latest Government Jobs • Rajasthan News • Yojana Updates • Results • Admit Card • Education News
+
+</marquee>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==========================================
+Hero Section
+========================================== -->
+
+<section class='hero-section'>
+
+<div class='container'>
+
+<div class='hero-grid'>
+
+<div class='hero-main'>
+
+<img src='https://picsum.photos/900/500'/>
+
+<div class='hero-content'>
+
+<span class='hero-category'>
+
+Featured
+
+</span>
+
+<h2>
+
+Welcome To Hadoti News Pro
+
+</h2>
+
+<p>
+
+India's Premium Blogger News Template
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class='hero-sidebar'>
+
+<div class='hero-card'>
+
+<img src='https://picsum.photos/400/220?1'/>
+
+<h3>
+
+Latest Government Jobs
+
+</h3>
+
+</div>
+
+<div class='hero-card'>
+
+<img src='https://picsum.photos/400/220?2'/>
+
+<h3>
+
+Rajasthan News
+
+</h3>
+
+</div>
+
+<div class='hero-card'>
+
+<img src='https://picsum.photos/400/220?3'/>
+
+<h3>
+
+Latest Results
+
+</h3>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 <!-- ==========================================================
      HEADER START
 =========================================================== -->
