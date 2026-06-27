@@ -223,6 +223,110 @@ strong{
 
 .pb-20{
     padding-bottom:20px;
+}/*=================================================
+HEADER
+==================================================*/
+
+.top-bar{
+
+background:var(--primary-color);
+
+color:#fff;
+
+padding:8px 0;
+
+font-size:14px;
+
+}
+
+.flex-between{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.header-main{
+
+background:#fff;
+
+padding:20px 0;
+
+box-shadow:0 2px 8px rgba(0,0,0,.05);
+
+}
+
+.logo a{
+
+font-size:30px;
+
+font-weight:700;
+
+color:var(--primary-color);
+
+}
+
+.main-nav{
+
+background:#fff;
+
+border-top:1px solid #eee;
+
+border-bottom:1px solid #eee;
+
+}
+
+.main-nav ul{
+
+display:flex;
+
+gap:30px;
+
+}
+
+.main-nav a{
+
+display:block;
+
+padding:16px 0;
+
+font-weight:600;
+
+color:#222;
+
+}
+
+.main-nav a:hover{
+
+color:var(--primary-color);
+
+}
+
+.menu-toggle{
+
+display:none;
+
+font-size:28px;
+
+cursor:pointer;
+
+}
+
+button{
+
+background:none;
+
+border:none;
+
+cursor:pointer;
+
+font-size:18px;
+
+color:#fff;
+
 }
 ]]></b:skin>
 
@@ -231,7 +335,86 @@ strong{
 <body>
 
     <div id='outer-wrapper'>
+<header id='header'>
 
+<div class='top-bar'>
+
+<div class='container flex-between'>
+
+<div class='top-left'>
+<span id='today-date'></span>
+</div>
+
+<div class='top-right'>
+<button id='darkModeBtn'>
+🌙
+</button>
+
+<button id='searchBtn'>
+🔍
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class='header-main'>
+
+<div class='container flex-between'>
+
+<div class='logo'>
+
+<a expr:href='data:blog.homepageUrl'>
+
+<data:blog.title/>
+
+</a>
+
+</div>
+
+<div class='menu-toggle'>
+
+☰
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<nav class='main-nav'>
+
+<div class='container'>
+
+<ul>
+
+<li><a href='/'>Home</a></li>
+
+<li><a href='/search/label/Latest'>Latest</a></li>
+
+<li><a href='/search/label/Jobs'>Jobs</a></li>
+
+<li><a href='/search/label/Yojana'>Yojana</a></li>
+
+<li><a href='/search/label/Admit%20Card'>Admit Card</a></li>
+
+<li><a href='/search/label/Result'>Result</a></li>
+
+<li><a href='/search/label/Contact'>Contact</a></li>
+
+</ul>
+
+</div>
+
+</nav>
+
+</header>
         <header id='header-wrapper'>
 
             <h1>
