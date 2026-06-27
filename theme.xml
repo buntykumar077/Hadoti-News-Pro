@@ -12,15 +12,29 @@
 
 <head>
 
-    <meta charset='UTF-8'/>
+<meta charset='UTF-8'/>
 
-    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'/>
 
-    <title>
-        <data:view.title.escaped/>
-    </title>
+<title><data:view.title.escaped/></title>
 
-    <b:include data='blog' name='all-head-content'/>
+<b:include data='blog' name='all-head-content'/>
+
+<b:skin><![CDATA[
+
+/*
+-----------------------------------------
+Theme Name : Hadoti News Pro
+Version    : 1.0.0
+Author     : Hadoti eMitra & CSC Center
+Website    : https://hadotiemitra.blogspot.com
+License    : Personal
+-----------------------------------------
+*/
+
+/* CSS will be added here */
+
+]]></b:skin>
 
 </head>
 
