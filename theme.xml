@@ -1059,11 +1059,223 @@ margin-bottom:20px;
 
 }
 
+}/*==========================================================
+DARK MODE
+==========================================================*/
+
+body.dark-mode{
+
+background:#121212;
+
+color:#eee;
+
+}
+
+body.dark-mode .header-main,
+
+body.dark-mode .main-nav,
+
+body.dark-mode .card{
+
+background:#1e1e1e;
+
+}
+
+body.dark-mode a{
+
+color:#fff;
+
+}
+
+/*==========================================================
+STICKY
+==========================================================*/
+
+#header.sticky{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+z-index:9999;
+
+animation:slideDown .3s;
+
+}
+
+@keyframes slideDown{
+
+from{
+
+transform:translateY(-100%);
+
+}
+
+to{
+
+transform:translateY(0);
+
+}
+
+}
+
+/*==========================================================
+MOBILE MENU
+==========================================================*/
+
+@media(max-width:992px){
+
+.main-nav{
+
+display:none;
+
+}
+
+.main-nav.active{
+
+display:block;
+
+}
+
+.menu-toggle{
+
+display:block;
+
+}
+
 }
 ]]></b:skin>
 
 </head>
+<!--==========================================================
+JAVASCRIPT
+===========================================================-->
 
+<script><![CDATA[
+
+document.addEventListener("DOMContentLoaded",function(){
+
+/*=========================
+LIVE DATE
+=========================*/
+
+const today=document.getElementById("today-date");
+
+if(today){
+
+const d=new Date();
+
+today.innerHTML=d.toLocaleDateString("en-IN",{
+
+weekday:"long",
+
+day:"numeric",
+
+month:"long",
+
+year:"numeric"
+
+});
+
+}
+
+/*=========================
+DARK MODE
+=========================*/
+
+const darkBtn=document.getElementById("darkModeBtn");
+
+if(darkBtn){
+
+darkBtn.onclick=function(){
+
+document.body.classList.toggle("dark-mode");
+
+localStorage.setItem(
+
+"theme",
+
+document.body.classList.contains("dark-mode")
+
+?"dark":"light"
+
+);
+
+};
+
+if(localStorage.getItem("theme")=="dark"){
+
+document.body.classList.add("dark-mode");
+
+}
+
+}
+
+/*=========================
+STICKY HEADER
+=========================*/
+
+window.addEventListener("scroll",function(){
+
+const header=document.getElementById("header");
+
+if(header){
+
+if(window.scrollY>100){
+
+header.classList.add("sticky");
+
+}else{
+
+header.classList.remove("sticky");
+
+}
+
+}
+
+});
+
+/*=========================
+MOBILE MENU
+=========================*/
+
+const menu=document.querySelector(".main-nav");
+
+const toggle=document.querySelector(".menu-toggle");
+
+if(toggle){
+
+toggle.onclick=function(){
+
+menu.classList.toggle("active");
+
+};
+
+}
+
+/*=========================
+SEARCH
+=========================*/
+
+const searchBtn=document.getElementById("searchBtn");
+
+if(searchBtn){
+
+searchBtn.onclick=function(){
+
+alert("Search Popup will be added in Module 4");
+
+};
+
+}
+
+});
+
+]]></script>
 <body>
 
 <div id='outer-wrapper'>
