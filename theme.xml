@@ -1,160 +1,98 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 
+<!--
+==========================================================
+                HADOTI NEWS PRO v2.0
+==========================================================
+
+ Theme Name    : Hadoti News Pro
+ Theme URI     : https://hadotiemitra.blogspot.com
+ Version       : 2.0.0
+
+ Author        : Hadoti eMitra & CSC Center
+ Author URI    : https://hadotiemitra.blogspot.com
+
+ Description   :
+ Premium Responsive Blogger News Template
+ Built From Scratch by Hadoti eMitra
+
+ Platform      : Blogger XML
+ Framework     : Hadoti Framework 2.0
+
+ Language      : Hindi / English
+
+ License       : Personal Use
+
+ Last Update   : 2026
+
+==========================================================
+-->
+
 <html
-    b:version='2'
-    class='v2'
-    expr:dir='data:blog.languageDirection'
-    expr:lang='data:blog.locale'
-    xmlns='http://www.w3.org/1999/xhtml'
-    xmlns:b='http://www.google.com/2005/gml/b'
-    xmlns:data='http://www.google.com/2005/gml/data'
-    xmlns:expr='http://www.google.com/2005/gml/expr'>
+xmlns='http://www.w3.org/1999/xhtml'
+xmlns:b='http://www.google.com/2005/gml/b'
+xmlns:data='http://www.google.com/2005/gml/data'
+xmlns:expr='http://www.google.com/2005/gml/expr'
+b:version='2'
+expr:dir='data:blog.languageDirection'
+expr:lang='data:blog.locale'
+class='loading'>
 
 <head>
 
 <meta charset='UTF-8'/>
 
 <meta
-content='width=device-width, initial-scale=1'
+content='width=device-width, initial-scale=1, maximum-scale=5'
 name='viewport'/>
 
+<meta
+content='IE=edge'
+http-equiv='X-UA-Compatible'/>
+
+<meta
+content='telephone=no'
+name='format-detection'/>
+
+<meta
+content='#0d6efd'
+name='theme-color'/>
+
+<meta
+content='light dark'
+name='color-scheme'/>
+
+<meta
+content='index,follow,max-image-preview:large'
+name='robots'/>
+
+<meta
+content='yes'
+name='mobile-web-app-capable'/>
+
+<meta
+content='yes'
+name='apple-mobile-web-app-capable'/>
+
+<meta
+content='default'
+name='apple-mobile-web-app-status-bar-style'/>
+
 <title>
+
 <data:view.title.escaped/>
+
 </title>
 
 <b:include data='blog' name='all-head-content'/>
 
-<meta content='index,follow' name='robots'/>
-<meta content='#0d6efd' name='theme-color'/>
+<meta expr:content='data:blog.metaDescription' name='description'/>
+
+<link expr:href='data:blog.homepageUrl' rel='canonical'/>
+
+<!-- ======================================================
+                 CSS FRAMEWORK START
+====================================================== -->
 
 <b:skin><![CDATA[
-
-/*====================================================
-
-Hadoti News Pro
-Version : 1.0
-
-====================================================*/
-
-
-:root{
-
---primary:#0d6efd;
---secondary:#ff6b00;
-
---success:#28a745;
---danger:#dc3545;
---warning:#ffc107;
-
---white:#ffffff;
---black:#111111;
-
---text:#333333;
---text-light:#666666;
-
---border:#e5e5e5;
---bg:#f5f5f5;
---card:#ffffff;
-
---radius:10px;
-
---shadow:0 5px 20px rgba(0,0,0,.08);
-
---container:1280px;
-
---transition:.3s;
-
-}
-
-
-
-/*==========================
-RESET
-==========================*/
-
-*{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-}
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
-body{
-
-font-family:Arial,Helvetica,sans-serif;
-
-font-size:16px;
-
-background:var(--bg);
-
-color:var(--text);
-
-line-height:1.6;
-
-overflow-x:hidden;
-
-}
-
-img{
-
-max-width:100%;
-
-display:block;
-
-}
-
-a{
-
-text-decoration:none;
-
-color:inherit;
-
-transition:var(--transition);
-
-}
-
-ul{
-
-list-style:none;
-
-}
-
-button,input,textarea{
-
-font:inherit;
-
-outline:none;
-
-border:none;
-
-}
-
-.container{
-
-width:100%;
-
-max-width:var(--container);
-
-margin:auto;
-
-padding:0 15px;
-
-}
-
-]]></b:skin>
-
-</head>
-
-<body>
-
-<div id='outer-wrapper'>
