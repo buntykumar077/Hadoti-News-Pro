@@ -1148,6 +1148,121 @@ display:block;
 }
 
 }
+  /*==========================================================
+FEATURED NEWS
+==========================================================*/
+
+#featured-news{
+
+padding:60px 0;
+
+}
+
+.section-heading{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:30px;
+
+}
+
+.section-heading h2{
+
+font-size:30px;
+
+font-weight:700;
+
+}
+
+.section-heading a{
+
+color:var(--primary);
+
+font-weight:600;
+
+}
+
+.featured-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr 1fr;
+
+gap:20px;
+
+}
+
+.featured-card{
+
+background:#fff;
+
+border-radius:14px;
+
+overflow:hidden;
+
+box-shadow:var(--shadow);
+
+transition:.3s;
+
+}
+
+.featured-card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.featured-card img{
+
+width:100%;
+
+display:block;
+
+}
+
+.featured-content{
+
+padding:18px;
+
+}
+
+.category-badge{
+
+display:inline-block;
+
+background:var(--primary);
+
+color:#fff;
+
+padding:6px 12px;
+
+border-radius:20px;
+
+font-size:12px;
+
+margin-bottom:10px;
+
+}
+
+.large{
+
+grid-row:span 2;
+
+}
+
+@media(max-width:992px){
+
+.featured-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
 ]]></b:skin>
 
 </head>
@@ -1384,6 +1499,131 @@ Rajasthan News
 <h3>
 
 Latest Results
+
+</h3>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+  <!--==========================================================
+FEATURED NEWS GRID
+===========================================================-->
+
+<section id='featured-news'>
+
+<div class='container'>
+
+<div class='section-heading'>
+
+<h2>
+
+Featured News
+
+</h2>
+
+<a href='/search'>
+
+View All →
+
+</a>
+
+</div>
+
+<div class='featured-grid'>
+
+<div class='featured-card large'>
+
+<img src='https://picsum.photos/800/500?11'/>
+
+<div class='featured-content'>
+
+<span class='category-badge'>
+
+Latest
+
+</span>
+
+<h3>
+
+Government Jobs Latest Update 2026
+
+</h3>
+
+<p>
+
+Read complete notification and important dates.
+
+</p>
+
+</div>
+
+</div>
+
+<div class='featured-card'>
+
+<img src='https://picsum.photos/400/260?12'/>
+
+<div class='featured-content'>
+
+<span class='category-badge'>
+
+Yojana
+
+</span>
+
+<h3>
+
+PM Kisan New Installment
+
+</h3>
+
+</div>
+
+</div>
+
+<div class='featured-card'>
+
+<img src='https://picsum.photos/400/260?13'/>
+
+<div class='featured-content'>
+
+<span class='category-badge'>
+
+Result
+
+</span>
+
+<h3>
+
+RBSE 12th Result Update
+
+</h3>
+
+</div>
+
+</div>
+
+<div class='featured-card'>
+
+<img src='https://picsum.photos/400/260?14'/>
+
+<div class='featured-content'>
+
+<span class='category-badge'>
+
+Admit Card
+
+</span>
+
+<h3>
+
+CET Admit Card Download
 
 </h3>
 
