@@ -6,10 +6,10 @@
     <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
     <title><data:view.title.escaped/></title>
     
-    <!-- Ultra SEO, OpenGraph & JSON-LD Rich Schema -->
+    <!-- Advanced SEO, OpenGraph & Premium Metadata -->
     <b:if cond='data:view.isHomepage'>
         <meta content='website' property='og:type'/>
-        <meta content='HadotiEMitra - Premium Digital Services &amp; News Hub' property='og:title'/>
+        <meta content='hadoti-news - देश-विदेश, जनरल नॉलेज, इंफॉरमेशन एवं सटीक समाचार पोर्टल' property='og:title'/>
     <b:elseif cond='data:view.isPost'/>
         <meta content='article' property='og:type'/>
         <meta expr:content='data:view.title.escaped' property='og:title'/>
@@ -17,239 +17,213 @@
     </b:if>
     <link expr:href='data:view.url.canonical' rel='canonical'/>
     
-    <!-- Premium Font Integration -->
-    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap' rel='stylesheet'/>
+    <!-- Google Fonts & FontAwesome Icons Integration -->
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans+Devanagari:wght@400;600;700&amp;display=swap' rel='stylesheet'/>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
 
     <b:skin><![CDATA[
     /*------------------------------------------------------------
-    ULTRA GRADIENT COLOR VARIABLES & CORE ARCHITECTURE
+    PREMIUM NEWS GRADIENT COLOR VARIABLES (hadoti-news)
     ------------------------------------------------------------*/
     :root {
-        --primary-gradient: linear-gradient(135deg, #ff007f 0%, #7928ca 100%);
-        --secondary-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-        --accent-glow: linear-gradient(90deg, #ff007f, #7928ca, #4facfe, #ff007f);
-        --accent-color: #ff007f;
-        --dark-bg: #090d16;
-        --dark-card: #131c2e;
-        --light-bg: #f4f6f9;
+        --primary-gradient: linear-gradient(135deg, #ff4500 0%, #ff007f 100%);
+        --secondary-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        --dark-bg: #060913;
+        --dark-card: #0f1626;
+        --light-bg: #f5f7fb;
         --light-card: #ffffff;
         --text-main: #1e293b;
         --text-muted: #64748b;
-        --font-premium: 'Plus Jakarta Sans', sans-serif;
-        --radius-prm: 18px;
-        --radius-sm: 10px;
-        --shadow-prm: 0 15px 35px -5px rgba(121, 40, 202, 0.12);
-        --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        --accent-color: #ff4500;
+        --font-global: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
+        --radius-prm: 14px;
+        --shadow-prm: 0 12px 30px rgba(30, 60, 114, 0.08);
+        --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* System Dark Mode Override */
     body.dark-mode {
         --light-bg: var(--dark-bg);
         --light-card: var(--dark-card);
         --text-main: #f8fafc;
         --text-muted: #94a3b8;
-        --shadow-prm: 0 15px 40px -10px rgba(0, 0, 0, 0.6);
+        --shadow-prm: 0 15px 40px rgba(0, 0, 0, 0.5);
     }
 
-    /* Core Reset CSS */
+    /* Core Layout Reset */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-premium); background-color: var(--light-bg); color: var(--text-main); transition: var(--transition); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-global); background-color: var(--light-bg); color: var(--text-main); transition: var(--transition); overflow-x: hidden; }
     a { color: inherit; text-decoration: none; transition: var(--transition); }
-    img { max-width: 100%; height: auto; display: block; border-radius: var(--radius-sm); }
-    
-    /* Reading Progress Tracker */
-    #progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 5px; background: var(--primary-gradient); z-index: 99999; transition: width 0.1s ease; }
+    img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
 
-    /* Layout Wrapper */
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-    
-    /* Flash News Ticker Layout */
-    .top-bar { background: #05070f; color: #fff; padding: 14px 0; font-size: 13px; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.04); }
-    .ticker-wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .ticker-box { display: flex; align-items: center; overflow: hidden; width: 75%; }
-    .ticker-title { background: var(--primary-gradient); padding: 6px 16px; font-weight: 800; border-radius: 8px; margin-right: 15px; white-space: nowrap; box-shadow: 0 4px 15px rgba(255, 0, 127, 0.35); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
-    .ticker-content { display: inline-block; white-space: nowrap; animation: ticker 35s linear infinite; color: #cbd5e1; }
-    @keyframes ticker { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+    /* Reading Progress Tracker Bar */
+    #progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: var(--primary-gradient); z-index: 99999; }
 
-    /* Sticky Glassmorphic Header Navigation */
-    header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 9999; box-shadow: 0 4px 30px rgba(0,0,0,0.02); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.04); }
-    body.dark-mode header { background: rgba(19, 28, 46, 0.85); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+    .container { max-width: 1260px; margin: 0 auto; padding: 0 20px; }
     
-    /* Brand Identity Logo Style */
-    .logo h1 { font-size: 28px; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; position: relative; }
+    /* Breaking News Ticker Module */
+    .top-bar { background: #0a0f1d; color: #fff; padding: 12px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .ticker-wrap { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+    .ticker-box { display: flex; align-items: center; overflow: hidden; width: 80%; }
+    .ticker-title { background: var(--primary-gradient); padding: 5px 14px; font-weight: 800; border-radius: 6px; margin-right: 15px; white-space: nowrap; font-size: 11px; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3); }
+    .ticker-content { display: inline-block; white-space: nowrap; animation: ticker-live 30s linear infinite; color: #e2e8f0; }
+    @keyframes ticker-live { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+    /* Glassmorphic Sticky Header Navigation */
+    header { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 9999; box-shadow: 0 2px 20px rgba(0,0,0,0.03); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.03); }
+    body.dark-mode header { background: rgba(15, 22, 38, 0.9); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
     
-    /* Professional Mega Navigation System */
-    nav ul { display: flex; list-style: none; gap: 32px; }
-    nav ul li a { font-weight: 600; font-size: 15px; color: var(--text-main); position: relative; padding: 8px 0; display: flex; align-items: center; gap: 6px; }
-    nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--primary-gradient); border-radius: 2px; transition: var(--transition); }
+    /* Branding Logotype */
+    .logo h1 { font-size: 28px; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
+    
+    /* Portal Navigation Menu */
+    nav ul { display: flex; list-style: none; gap: 24px; }
+    nav ul li a { font-weight: 700; font-size: 15px; color: var(--text-main); padding: 6px 0; position: relative; }
+    nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--primary-gradient); transition: var(--transition); border-radius: 2px; }
     nav ul li a:hover::after { width: 100%; }
 
-    /* Floating Control Buttons */
-    .nav-actions { display: flex; align-items: center; gap: 15px; }
-    .action-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--light-bg); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); border: 1px solid rgba(0,0,0,0.04); color: var(--text-main); }
-    .action-btn:hover { transform: scale(1.08) rotate(15deg); background: var(--primary-gradient); color: #fff; box-shadow: 0 8px 20px rgba(121, 40, 202, 0.2); }
+    /* Action Triggers */
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .action-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--light-bg); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(0,0,0,0.04); transition: var(--transition); }
+    .action-btn:hover { background: var(--primary-gradient); color: #fff; transform: translateY(-2px); }
 
-    /* Live Search Popup Overlay */
-    .search-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 7, 15, 0.95); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
-    .search-dialog { background: var(--light-card); padding: 40px; border-radius: var(--radius-prm); width: 92%; max-width: 600px; box-shadow: var(--shadow-prm); border: 1px solid rgba(255,255,255,0.08); position: relative; }
-    .search-dialog input { width: 100%; padding: 18px; border: 2px solid rgba(0,0,0,0.05); border-radius: 12px; background: var(--light-bg); color: var(--text-main); font-size: 16px; font-family: var(--font-premium); font-weight: 600; outline: none; transition: var(--transition); }
-    .search-dialog input:focus { border-color: var(--accent-color); box-shadow: 0 0 15px rgba(255,0,127,0.15); }
+    /* Grid Template Framework */
+    .main-wrapper { display: grid; grid-template-columns: 1fr; gap: 35px; margin-top: 35px; }
+    @media(min-width: 992px) { .main-wrapper { grid-template-columns: 2.4fr 1fr; } }
 
-    /* Ultra Modern Hero Layout Carousel Space */
-    .hero-banner { background: var(--primary-gradient); padding: 60px 40px; color: #fff; border-radius: var(--radius-prm); margin-top: 35px; text-align: center; box-shadow: 0 20px 45px rgba(121, 40, 202, 0.25); position: relative; overflow: hidden; }
-    .hero-banner h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
-    .hero-banner p { font-size: 16px; opacity: 0.95; font-weight: 500; }
-    .hero-banner::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); pointer-events: none; }
-
-    /* Grid Architecture Systems */
-    .main-wrapper { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 45px; }
-    @media(min-width: 992px) { .main-wrapper { grid-template-columns: 2.3fr 1fr; } }
-
-    /* Homepage Posts Grid Style */
-    .posts-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-    @media(min-width: 650px) { .posts-grid { grid-template-columns: 1fr 1fr; } }
+    /* Core Feed - Multiple Items Grid */
+    .posts-grid { display: grid; grid-template-columns: 1fr; gap: 25px; }
+    @media(min-width: 600px) { .posts-grid { grid-template-columns: 1fr 1fr; } }
     
-    .card { background: var(--light-card); border-radius: var(--radius-prm); overflow: hidden; box-shadow: var(--shadow-prm); transition: var(--transition); border: 1px solid rgba(0,0,0,0.02); display: flex; flex-direction: column; height: 100%; }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -10px rgba(121, 40, 202, 0.22); }
-    .card-thumb { height: 240px; background: #e2e8f0; position: relative; overflow: hidden; }
+    .card { background: var(--light-card); border-radius: var(--radius-prm); overflow: hidden; box-shadow: var(--shadow-prm); border: 1px solid rgba(0,0,0,0.02); display: flex; flex-direction: column; height: 100%; transition: var(--transition); }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 35px rgba(30, 60, 114, 0.15); }
+    .card-thumb { height: 210px; background: #e2e8f0; position: relative; overflow: hidden; }
     .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
-    .card:hover .card-thumb img { transform: scale(1.08); }
+    .card:hover .card-thumb img { transform: scale(1.06); }
     
-    .badge { position: absolute; top: 18px; left: 18px; background: var(--secondary-gradient); color: #fff; padding: 6px 14px; font-size: 11px; font-weight: 700; border-radius: 8px; text-transform: uppercase; box-shadow: 0 6px 15px rgba(79, 172, 254, 0.35); }
-    .card-content { padding: 28px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .card-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; display: flex; gap: 16px; font-weight: 600; }
+    .badge { position: absolute; top: 12px; left: 12px; background: var(--secondary-gradient); color: #fff; padding: 5px 12px; font-size: 11px; font-weight: 700; border-radius: 6px; text-transform: uppercase; }
+    .card-content { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; display: flex; gap: 12px; font-weight: 600; }
     .card-meta i { color: var(--accent-color); }
-    .card-title { font-size: 22px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; color: var(--text-main); }
-    .card-text { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
-    .read-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; width: fit-content; }
-    .read-btn i { transition: var(--transition); color: var(--accent-color); -webkit-text-fill-color: initial; }
-    .card:hover .read-btn i { transform: translateX(6px); }
+    .card-title { font-size: 19px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; color: var(--text-main); }
+    .card-text { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 15px; }
+    .read-btn { font-weight: 700; font-size: 13.5px; color: var(--accent-color); display: inline-flex; align-items: center; gap: 6px; }
 
-    /* ------------------------------------------------------------
-    ADVANCED INNER POST CONTENT PAGE STYLING (The Fix)
+    /*------------------------------------------------------------
+    COMPLEX NATIVE POST DETAILS PAGE STYLING 
     ------------------------------------------------------------*/
-    .post-body-container { background: var(--light-card); padding: 40px; border-radius: var(--radius-prm); box-shadow: var(--shadow-prm); border: 1px solid rgba(0,0,0,0.02); }
-    .post-main-title { font-size: 34px; font-weight: 800; line-height: 1.3; margin-bottom: 20px; color: var(--text-main); }
-    .breadcrumb { display: flex; gap: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 25px; font-weight: 600; }
-    .breadcrumb a:hover { color: var(--accent-color); }
+    .post-body-container { background: var(--light-card); padding: 35px; border-radius: var(--radius-prm); box-shadow: var(--shadow-prm); border: 1px solid rgba(0,0,0,0.02); }
+    .post-main-title { font-size: 32px; font-weight: 800; line-height: 1.3; margin-bottom: 18px; color: var(--text-main); }
+    .breadcrumb-nav { display: flex; gap: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 20px; font-weight: 600; }
+    .post-content-inner { font-size: 16px; line-height: 1.8; color: var(--text-main); }
+    .post-content-inner p { margin-bottom: 18px; }
+    .post-content-inner h2, .post-content-inner h3 { margin: 30px 0 15px; font-weight: 800; }
+    .post-content-inner h2 { font-size: 24px; border-left: 4px solid var(--accent-color); padding-left: 12px; }
     
-    /* Table Of Contents UI */
-    .table-of-contents { background: var(--light-bg); border-left: 5px solid var(--accent-color); padding: 20px; border-radius: var(--radius-sm); margin: 30px 0; }
-    .toc-title { font-weight: 800; font-size: 16px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-    .toc-list { list-style: none; padding-left: 5px; }
-    .toc-list li { margin-bottom: 8px; font-size: 14px; font-weight: 600; }
-    
-    /* Typography inside posts */
-    .post-content-area { font-size: 16px; line-height: 1.8; color: var(--text-main); }
-    .post-content-area h2, .post-content-area h3 { margin: 35px 0 15px; font-weight: 800; color: var(--text-main); }
-    .post-content-area h2 { font-size: 26px; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 8px; }
-    .post-content-area p { margin-bottom: 20px; }
-    
-    /* Dynamic Code Block Component & Copy Button */
-    pre { background: #0f172a; color: #f8fafc; padding: 20px; border-radius: var(--radius-sm); overflow-x: auto; position: relative; margin: 30px 0; font-family: monospace; }
-    .copy-btn { position: absolute; top: 12px; right: 12px; background: var(--primary-gradient); border: none; color: white; padding: 5px 12px; font-size: 11px; font-weight: 700; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-    
-    /* Premium Author Details Widget Box */
-    .author-box { display: flex; gap: 20px; align-items: center; background: var(--light-bg); padding: 25px; border-radius: var(--radius-sm); margin-top: 50px; border: 1px solid rgba(0,0,0,0.03); }
-    .author-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); }
-    .author-info h4 { font-size: 18px; font-weight: 800; margin-bottom: 5px; }
-    .author-info p { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+    /* Social Share Area */
+    .share-container { display: flex; gap: 10px; margin: 25px 0; flex-wrap: wrap; }
+    .share-btn { padding: 8px 16px; border-radius: 6px; color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .share-fb { background: #3b5998; }
+    .share-tw { background: #1da1f2; }
+    .share-wa { background: #25d366; }
 
-    /* Custom Advanced Comment System area */
-    .comment-area-box { margin-top: 50px; background: var(--light-card); padding: 35px; border-radius: var(--radius-prm); box-shadow: var(--shadow-prm); }
-    .comment-title { font-size: 20px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; }
+    /* Native Comment System */
+    .comment-wrapper { margin-top: 40px; background: var(--light-card); padding: 30px; border-radius: var(--radius-prm); box-shadow: var(--shadow-prm); }
 
-    /* Professional Sidebar Modules */
-    .sidebar { display: flex; flex-direction: column; gap: 35px; }
-    .widget { background: var(--light-card); padding: 30px; border-radius: var(--radius-prm); box-shadow: var(--shadow-prm); border: 1px solid rgba(0,0,0,0.02); }
-    .widget-title { font-size: 16px; font-weight: 800; text-transform: uppercase; margin-bottom: 22px; position: relative; padding-bottom: 12px; letter-spacing: 0.5px; }
-    .widget-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 45px; height: 4px; background: var(--primary-gradient); border-radius: 2px; }
-
-    /* Heavy Premium Footer Columns Layout */
-    footer { background: #05070f; color: #94a3b8; padding: 80px 0 35px; margin-top: 90px; border-top: 3px solid rgba(121, 40, 202, 0.25); }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 45px; margin-bottom: 50px; }
-    .footer-col h3 { color: #fff; margin-bottom: 25px; font-size: 20px; font-weight: 800; position: relative; }
-    .footer-col h3::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 35px; height: 3px; background: var(--secondary-gradient); }
-    .footer-col p { font-size: 14px; line-height: 1.8; color: #94a3b8; }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 12px; font-size: 14px; font-weight: 600; }
-    .footer-links li a:hover { color: #fff; padding-left: 5px; }
+    /*------------------------------------------------------------
+    ADVANCED SIDEBAR WIDGETS SYSTEM (Fully Re-engineered)
+    ------------------------------------------------------------*/
+    .sidebar { display: flex; flex-direction: column; gap: 30px; }
+    .widget-container { background: var(--light-card); padding: 25px; border-radius: var(--radius-prm); box-shadow: var(--shadow-prm); border: 1px solid rgba(0,0,0,0.02); }
+    .widget-header-title { font-size: 15px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; position: relative; padding-bottom: 10px; letter-spacing: 0.5px; border-bottom: 2px solid rgba(0,0,0,0.04); }
+    .widget-header-title::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 40px; height: 2px; background: var(--primary-gradient); }
     
-    /* 100% Secure Private Copyright Brand Stamp */
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 30px; text-align: center; font-size: 14px; font-weight: 600; color: #475569; }
+    /* 1. Native Search Form Box Widget CSS */
+    .search-widget-form form { display: flex; gap: 8px; }
+    .search-widget-input { flex-grow: 1; padding: 10px 14px; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; background: var(--light-bg); color: var(--text-main); font-weight: 500; outline: none; }
+    .search-widget-input:focus { border-color: var(--accent-color); }
+    .search-widget-submit { background: var(--primary-gradient); color: #fff; border: none; padding: 0 16px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+
+    /* 2. Native Labels / Categories Widget CSS */
+    .label-cloud { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+    .label-cloud li a { display: block; background: var(--light-bg); padding: 6px 12px; font-size: 13px; font-weight: 600; border-radius: 6px; transition: var(--transition); border: 1px solid rgba(0,0,0,0.02); }
+    .label-cloud li a:hover { background: var(--primary-gradient); color: #fff; transform: translateY(-2px); }
+
+    /* 3. Native Profile (About Me) Widget CSS */
+    .profile-card { text-align: center; }
+    .profile-img { width: 85px; height: 85px; border-radius: 50%; margin: 0 auto 12px; border: 3px solid var(--accent-color); object-fit: cover; }
+    .profile-name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .profile-bio { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px; }
+    .profile-link { font-size: 12px; font-weight: 700; color: var(--accent-color); text-transform: uppercase; }
+
+    /* 4. Native Report Abuse & Attribution Widget CSS */
+    .report-abuse-link { font-size: 12px; font-weight: 600; color: var(--text-muted); text-decoration: underline; }
+    .report-abuse-link:hover { color: var(--accent-color); }
+
+    /* Premium Heavy Column Footer Structure */
+    footer { background: #04060d; color: #94a3b8; padding: 75px 0 30px; margin-top: 80px; border-top: 2px solid rgba(255, 69, 0, 0.2); }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 45px; }
+    .footer-col h3 { color: #fff; margin-bottom: 20px; font-size: 19px; font-weight: 800; position: relative; }
+    .footer-col h3::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 30px; height: 2.5px; background: var(--primary-gradient); }
+    .footer-col p { font-size: 13.5px; line-height: 1.8; }
+    .footer-menu { list-style: none; }
+    .footer-menu li { margin-bottom: 10px; font-size: 13.5px; font-weight: 600; }
+    .footer-menu li a:hover { color: #fff; padding-left: 4px; }
+    
+    /* 100% Protected Original Copyright Area - hadoti-news */
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 25px; text-align: center; font-size: 13.5px; font-weight: 600; color: #475569; }
     .footer-bottom a { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
 
-    /* UI Navigation Operations Button */
-    #back-to-top { position: fixed; bottom: 35px; right: 35px; background: var(--primary-gradient); color: #fff; width: 48px; height: 48px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 9999; box-shadow: 0 10px 25px rgba(255, 0, 127, 0.4); border: none; transition: var(--transition); }
-    #back-to-top:hover { transform: translateY(-6px); }
+    /* Back To Top UI Component */
+    #back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--primary-gradient); color: #fff; width: 44px; height: 44px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 9999; box-shadow: 0 8px 20px rgba(255, 69, 0, 0.35); border: none; transition: var(--transition); }
+    #back-to-top:hover { transform: translateY(-5px); }
     ]]></b:skin>
 </head>
 
 <body>
-    <!-- Real-time Loading Scroll Bar -->
+    <!-- Live Document Reading Progress Bar Indicator -->
     <div id='progress-bar'/>
 
-    <!-- Hot Breaking Flash System Header -->
+    <!-- Dynamic Ticker Flash Header -->
     <div class='top-bar'>
         <div class='container ticker-wrap'>
             <div class='ticker-box'>
-                <div class='ticker-title'><i class='fas fa-fire animate-pulse'/> LATEST INFO</div>
+                <div class='ticker-title'><i class='fas fa-circle-dot animate-pulse' style='color:#fff;'/> मुख्य समाचार</div>
                 <div class='ticker-content'>
-                    🚀 Welcome to HadotiEMitra Premium Private Template V2 - 100% Core Web Vitals Standard Enabled, Optimized for Fast Indexing and Discover Feeds!
+                    📰 स्वागत है "hadoti-news" न्यूज़ पोर्टल पर - यहाँ आपको मिलेगी देश-विदेेश की ताज़ा खबरें, सामान्य ज्ञान (GK), सरकारी सूचनाएं और महत्वपूर्ण सामान्य जानकारियां सबसे तेज़!
                 </div>
             </div>
-            <div id='live-date' style='font-weight: 700; color: #64748b;'/>
+            <div id='live-date-engine' style='font-weight: 700; color: #64748b;'/>
         </div>
     </div>
 
-    <!-- Sticky Main Navigation Center -->
+    <!-- Navigation Brand Header Menu Structure -->
     <header>
         <div class='container header-inner'>
+            <!-- Updated Brand Named Identification Layout -->
             <div class='logo'>
-                <a expr:href='data:blog.homepageUrl'><h1>HadotiEMitra</h1></a>
+                <a expr:href='data:blog.homepageUrl'><h1>hadoti-news</h1></a>
             </div>
             
             <nav>
                 <ul>
-                    <li><a expr:href='data:blog.homepageUrl'><i class='fa-solid fa-house'/> Home</a></li>
-                    <li><a href='/search/label/Services'><i class='fa-solid fa-laptop-code'/> Digital Services</a></li>
-                    <li><a href='/search/label/Schemes'><i class='fa-solid fa-landmark'/> Schemes</a></li>
-                    <li><a href='/search/label/Jobs'><i class='fa-solid fa-briefcase'/> Latest Updates</a></li>
+                    <li><a expr:href='data:blog.homepageUrl'><i class='fa-solid fa-house' style='font-size:13px;'/> होम</a></li>
+                    <li><a href='/search/label/देश-विदेश'>देश-विदेश</a></li>
+                    <li><a href='/search/label/सामान्य-ज्ञान'>सामान्य ज्ञान (GK)</a></li>
+                    <li><a href='/search/label/महत्वपूर्ण-जानकारी'>जरूरी जानकारियां</a></li>
                 </ul>
             </nav>
             
             <div class='nav-actions'>
-                <div class='action-btn' id='search-trigger'><i class='fas fa-search'/></div>
-                <div class='action-btn' id='dark-mode-toggle'><i class='fas fa-moon'/></div>
+                <div class='action-btn' id='dark-mode-switch'><i class='fas fa-moon'/></div>
             </div>
         </div>
     </header>
 
-    <!-- Ajax Active Modern Search Portal popup Wrapper -->
-    <div class='search-overlay' id='search-layer'>
-        <div class='search-dialog'>
-            <h3 style='margin-bottom:18px; font-weight:800; letter-spacing:-0.5px;'>Search Engine Portal</h3>
-            <form action='/search' method='get'>
-                <input autocomplete='off' name='q' placeholder='Type keywords here &amp; press enter...' type='text'/>
-            </form>
-        </div>
-    </div>
-
     <div class='container'>
-        <!-- Conditional Homepage Hero Banner Display -->
-        <b:if cond='data:view.isHomepage'>
-            <div class='hero-banner'>
-                <h2>HadotiEMitra Elite Dynamic Hub</h2>
-                <p>The premium portal optimized for high speed distribution of regional digital resources and public announcements.</p>
-            </div>
-        </b:if>
-
-        <!-- Main Fluid Double Grid Infrastructure layout -->
         <div class='main-wrapper'>
             
-            <!-- Core Feed Engine Area -->
+            <!-- Core Content Processor Area (Fixes Inner & Outer Post Elements Rendering) -->
             <main class='main-content'>
                 <b:section class='main-section' id='main-section' showaddelement='true'>
                     <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2'>
@@ -259,82 +233,79 @@
                         </b:widget-settings>
                         
                         <b:includable id='main' var='this'>
-                            <!-- IF USER IS ON HOMEPAGE OR CATEGORY GRID VIEW -->
+                            <!-- CONDITION A: MULTIPLE POST LISTS (Homepage / Category / Search View) -->
                             <b:if cond='data:view.isMultipleItems'>
                                 <div class='posts-grid'>
                                     <b:loop values='data:posts' var='post'>
                                         <article class='card'>
                                             <div class='card-thumb'>
-                                                <span class='badge'>Official</span>
+                                                <span class='badge'>न्यूज़ पोर्टल</span>
                                                 <b:if cond='data:post.featuredImage'>
                                                     <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
                                                 <b:else/>
-                                                    <img alt='HadotiEMitra Default Thumbnail' loading='lazy' src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600'/>
+                                                    <img alt='hadoti-news Default' loading='lazy' src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600'/>
                                                 </b:if>
                                             </div>
                                             <div class='card-content'>
                                                 <div>
                                                     <div class='card-meta'>
-                                                        <span><i class='far fa-calendar-check'/> <data:post.date/></span>
-                                                        <span><i class='far fa-user'/> Admin</span>
+                                                        <span><i class='far fa-clock'/> <data:post.date/></span>
+                                                        <span><i class='far fa-folder-open'/> समाचार</span>
                                                     </div>
                                                     <h2 class='card-title'><a expr:href='data:post.url'><data:post.title/></a></h2>
                                                     <p class='card-text'><data:post.snippet/></p>
                                                 </div>
-                                                <a class='read-btn' expr:href='data:post.url'>Explore Post <i class='fas fa-arrow-right'/></a>
+                                                <a class='read-btn' expr:href='data:post.url'>पूरी खबर पढ़ें <i class='fas fa-arrow-right-long'/></a>
                                             </div>
                                         </article>
                                     </b:loop>
                                 </div>
                                 
-                            <!-- ELSE IF THE USER OPENS A SINGLE POST (Fills the Post View Body correctly) -->
+                            <!-- CONDITION B: SINGLE EXCLUSIVE POST PAGE VIEW (Fixed Post Details Error) -->
                             <b:else/>
                                 <b:loop values='data:posts' var='post'>
                                     <article class='post-body-container'>
-                                        <!-- Breadcrumb Navigation Component -->
-                                        <div class='breadcrumb'>
-                                            <a expr:href='data:blog.homepageUrl'>Home</a> <i class='fas fa-chevron-right' style='font-size:10px; align-self:center;'/> <span>Post View</span>
+                                        <!-- Real-time Context Breadcrumbs -->
+                                        <div class='breadcrumb-nav'>
+                                            <a expr:href='data:blog.homepageUrl'>होम</a> <i class='fas fa-angle-right' style='align-self:center; font-size:11px;'/> <span>मुख्य समाचार लेख</span>
                                         </div>
                                         
-                                        <!-- Post Main Title Statement -->
+                                        <!-- Post Main Heading Title Statement -->
                                         <h1 class='post-main-title'><data:post.title/></h1>
                                         
-                                        <!-- Post Dynamic Author and Time Meta details -->
-                                        <div class='card-meta' style='margin-bottom:30px; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:15px;'>
-                                            <span><i class='far fa-calendar-alt'/> Published: <data:post.date/></span>
-                                            <span><i class='far fa-user'/> Author: <data:post.author.name/></span>
-                                            <span><i class='far fa-eye'/> Verified Content</span>
+                                        <!-- Native Inner Post Technical Meta Parameters -->
+                                        <div class='card-meta' style='margin-bottom:25px; border-bottom:1px solid rgba(0,0,0,0.06); padding-bottom:12px;'>
+                                            <span><i class='far fa-calendar-days'/> प्रकाशित तिथि: <data:post.date/></span>
+                                            <span><i class='far fa-user-circle'/> संपादक: hadoti-news Team</span>
+                                            <span><i class='fa-solid fa-shield-halved'/> सत्यापित जानकारी</span>
                                         </div>
 
-                                        <!-- Premium Static Auto Table of Contents Structure Layout -->
-                                        <div class='table-of-contents'>
-                                            <div class='toc-title'><i class='fas fa-list-ol'/> Quick Navigation Menu</div>
-                                            <ul class='toc-list'>
-                                                <li>1. Introduction &amp; Core Overview</li>
-                                                <li>2. Main Eligibility Criteria &amp; Updates</li>
-                                                <li>3. Step by Step Online Application Process</li>
-                                                <li>4. Summary Guidelines &amp; Direct Links</li>
-                                            </ul>
-                                        </div>
-
-                                        <!-- Real Main Post Dynamic Data Content Output Area -->
-                                        <div class='post-content-area'>
+                                        <!-- Real Dynamic Render Block of Body Contents -->
+                                        <div class='post-content-inner'>
                                             <data:post.body/>
                                         </div>
 
-                                        <!-- Author Signature Widget Board -->
-                                        <div class='author-box'>
-                                            <img alt='HadotiEMitra Head Author' class='author-avatar' src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'/>
-                                            <div class='author-info'>
-                                                <h4>HadotiEMitra Editorial Board</h4>
-                                                <p>Providing vetted, super fast authentic government schema updates, tech documentation, and digital solution guidelines across Rajasthan.</p>
+                                        <!-- Native Labels inside Post Meta -->
+                                        <b:if cond='data:post.labels'>
+                                            <div style='margin-top:20px; font-size:14px; font-weight:700;'>
+                                                <i class='fas fa-tags' style='color:var(--accent-color); margin-right:5px;'/> कैटेगरीज: 
+                                                <b:loop values='data:post.labels' var='label'>
+                                                    <a expr:href='data:label.url' rel='tag' style='margin-right:8px; color:var(--text-muted); font-weight:600;'><data:label.name/></a>
+                                                </b:loop>
                                             </div>
+                                        </b:if>
+
+                                        <!-- Floating Social Share Component System -->
+                                        <div class='share-container'>
+                                            <a class='share-btn share-fb' expr:href='"https://www.facebook.com/sharer/sharer.php?u=" + data:post.url' target='_blank'><i class='fab fa-facebook-f'/> Facebook</a>
+                                            <a class='share-btn share-tw' expr:href='"https://twitter.com/intent/tweet?url=" + data:post.url + "&amp;text=" + data:post.title' target='_blank'><i class='fab fa-twitter'/> Twitter</a>
+                                            <a class='share-btn share-wa' expr:href='"https://api.whatsapp.com/send?text=" + data:post.title + " %0A " + data:post.url' target='_blank'><i class='fab fa-whatsapp'/> WhatsApp</a>
                                         </div>
                                     </article>
 
-                                    <!-- Premium Native Comment Systems Integration Section -->
-                                    <div class='comment-area-box'>
-                                        <h3 class='comment-title'><i class='far fa-comments'/> Document Discussion Feed</h3>
+                                    <!-- Threded Content Native Comments Output Field -->
+                                    <div class='comment-wrapper'>
+                                        <h3 style='font-size:18px; font-weight:800; margin-bottom:20px;'><i class='far fa-comments'/> पाठकों की प्रतिक्रियाएं</h3>
                                         <b:include data='post' name='comments'/>
                                     </div>
                                 </b:loop>
@@ -344,17 +315,55 @@
                 </b:section>
             </main>
 
-            <!-- Ultra Modern Sticky Functional Sidebar Section Grid -->
+            <!-- Fully Functional Native Structural Sidebar System Layout -->
             <aside class='sidebar'>
-                <b:section class='sidebar-section' id='sidebar-section' showaddelement='true'>
-                    <b:widget id='PopularPosts1' locked='false' title='🔥 Hot Trends Now' type='PopularPosts' version='2'>
+                
+                <!-- 1. LIVE SEARCH BOX COMPONENT WIDGET -->
+                <b:section class='search-widget-area' id='search-widget-area' showaddelement='true'>
+                    <b:widget id='BlogSearch1' locked='false' title='पोर्टल पर खोजें' type='BlogSearch' version='2'>
                         <b:includable id='main'>
-                            <div class='widget'>
-                                <h3 class='widget-title'><data:title/></h3>
-                                <ul style='list-style:none;'>
-                                    <b:loop values='data:posts' var='post'>
-                                        <li style='margin-bottom:18px; font-weight:700; font-size:14px; border-bottom:1px solid rgba(0,0,0,0.04); padding-bottom:12px; line-height:1.4;'>
-                                            <a expr:href='data:post.url' style='color:var(--text-main);'><data:post.title/></a>
+                            <div class='widget-container'>
+                                <h3 class='widget-header-title'><data:title/></h3>
+                                <div class='search-widget-form'>
+                                    <form expr:action='data:blog.searchUrl' method='get'>
+                                        <input class='search-widget-input' name='q' expr:placeholder='यहाँ लिखें...' type='text'/>
+                                        <button class='search-widget-submit' type='submit'><i class='fas fa-search'/></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+
+                <!-- 2. ABOUT ME / PROFILE COMPONENT WIDGET -->
+                <b:section class='profile-widget-area' id='profile-widget-area' showaddelement='true'>
+                    <b:widget id='Profile1' locked='false' title='संपादक के बारे में' type='Profile' version='2'>
+                        <b:includable id='main'>
+                            <div class='widget-container profile-card'>
+                                <h3 class='widget-header-title'><data:title/></h3>
+                                <b:if cond='data:team'>
+                                    <p class='profile-bio'>hadoti-news Editorial Corporate News Network Room Panel.</p>
+                                <b:else/>
+                                    <img alt='hadoti-news Editor' class='profile-img' src='https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150'/>
+                                    <div class='profile-name'>hadoti-news Team</div>
+                                    <p class='profile-bio'>देश-विदेश की प्रामाणिक खबरें, महत्वपूर्ण ज्ञानवर्धक जानकारी, एवं सामान्य ज्ञान (GK) का विश्वसनीय डिजिटल न्यूज मंच।</p>
+                                    <a class='profile-link' expr:href='data:userUrl' target='_blank'>पूरा प्रोफ़ाइल देखें</a>
+                                </b:if>
+                            </div>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+
+                <!-- 3. NATIVE DYNAMIC LABELS / CATEGORIES COMPONENT WIDGET -->
+                <b:section class='labels-widget-area' id='labels-widget-area' showaddelement='true'>
+                    <b:widget id='Label1' locked='false' title='मुख्य कैटेगरीज' type='Label' version='2'>
+                        <b:includable id='main'>
+                            <div class='widget-container'>
+                                <h3 class='widget-header-title'><data:title/></h3>
+                                <ul class='label-cloud'>
+                                    <b:loop values='data:labels' var='label'>
+                                        <li>
+                                            <a expr:href='data:label.url'><data:label.name/> (<data:label.count/>)</a>
                                         </li>
                                     </b:loop>
                                 </ul>
@@ -362,102 +371,92 @@
                         </b:includable>
                     </b:widget>
                 </b:section>
+
+                <!-- 4. REPORT ABUSE & ATTRIBUTION SECTION MODULE -->
+                <b:section class='meta-widget-area' id='meta-widget-area' showaddelement='true'>
+                    <b:widget id='Attribution1' locked='false' title='कॉपीराइट सूचना' type='Attribution' version='2'>
+                        <b:includable id='main'>
+                            <div class='widget-container' style='text-align: center; padding: 15px;'>
+                                <p style='font-size:12px; color:var(--text-muted); margin-bottom:8px;'>
+                                    <data:attribution/> Powered by Blogger.
+                                </p>
+                                <a class='report-abuse-link' expr:href='data:reportAbuseUrl' target='_blank'>Report Abuse (शिकायत दर्ज करें)</a>
+                            </div>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+
             </aside>
 
         </div>
     </div>
 
-    <!-- Active Back To Top Navigation Action Circle -->
-    <div id='back-to-top'><i class='fas fa-chevron-up'/></div>
+    <!-- Active Core Back To Top Circle Operation -->
+    <button id='back-to-top' aria-label='Scroll to top'><i class='fas fa-arrow-up'/></button>
 
-    <!-- Ultra Massive Heavy Grid Footer Setup Block -->
+    <!-- Heavy Dynamic Multi Column Footer System -->
     <footer>
         <div class='container footer-grid'>
             <div class='footer-col'>
-                <h3 style='color:#fff; font-weight:800; font-size:24px; margin-bottom:15px; background:var(--primary-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent;'>HadotiEMitra</h3>
-                <p>The premium, secure state-of-the-art content network delivering blazing fast e-governance, financial schemes, and technical insights directly to citizens.</p>
+                <h3 style='color:#fff; font-weight:800; font-size:24px; margin-bottom:15px; background:var(--primary-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent;'>hadoti-news</h3>
+                <p>hadoti-news डिजिटल मीडिया नेटवर्क भारत एवं वैश्विक स्तर पर घटित होने वाली महत्वपूर्ण घटनाओं, सामान्य ज्ञान (GK), और जनहित से जुड़ी जानकारियों को निष्पक्षता से आप तक पहुँचाने का संकल्प रखता है।</p>
             </div>
             <div class='footer-col'>
-                <h3>Digital Services</h3>
-                <ul class='footer-links'>
-                    <li><a href='#'>Online Applications</a></li>
-                    <li><a href='#'>E-Mitra Support</a></li>
-                    <li><a href='#'>Verification Desk</a></li>
+                <h3>महत्वपूर्ण कड़ियाँ</h3>
+                <ul class='footer-menu'>
+                    <li><a href='/search/label/देश-विदेश'>राष्ट्रीय एवं अंतर्राष्ट्रीय समाचार</a></li>
+                    <li><a href='/search/label/सामान्य-ज्ञान'>करंट अफेयर्स &amp; सामान्य ज्ञान</a></li>
+                    <li><a href='/search/label/महत्वपूर्ण-जानकारी'>सरकारी योजनाओं की गाइडलाइंस</a></li>
                 </ul>
             </div>
             <div class='footer-col'>
-                <h3>Legal &amp; Policy</h3>
-                <ul class='footer-links'>
-                    <li><a href='#'>Privacy Policy</a></li>
-                    <li><a href='#'>Terms and Conditions</a></li>
-                    <li><a href='#'>Disclaimer Policy</a></li>
+                <h3>नीति और कानूनी डेस्क</h3>
+                <ul class='footer-menu'>
+                    <li><a href='#'>गोपनीयता नीति (Privacy Policy)</a></li>
+                    <li><a href='#'>नियम एवं शर्तें (Terms of Use)</a></li>
+                    <li><a href='#'>अस्वीकरण (Disclaimer)</a></li>
                 </ul>
             </div>
         </div>
         
-        <!-- Private 100% Locked Copyright Block - HadotiEMitra Exclusive -->
+        <!-- 100% Protected Core Original Copyright Statement Lock -->
         <div class='footer-bottom'>
-            &amp;copy; 2026 <a href='https://www.hadotiemitra.com/'>HadotiEMitra</a>. All Rights Private &amp; Reserved. Developed with High Performance Framework.
+            &amp;copy; 2026 <a href='https://www.hadoti-news.com/'>hadoti-news</a> Portal. सर्वाधिकार सुरक्षित। Designed for Advanced Speed &amp; Accuracy.
         </div>
     </footer>
 
-    <!-- Complex Pure Vanilla Dynamic Component Scripts Logic Module -->
+    <!-- Native Smooth Operational Components Client Engine Script -->
     <script>
         //<![CDATA[
-        // 1. Dark Mode State Management Mechanics
-        const darkToggle = document.getElementById('dark-mode-toggle');
-        const icon = darkToggle.querySelector('i');
-        darkToggle.addEventListener('click', () => {
+        // 1. Fluid Dynamic Dark Mode Implementation Core Code
+        const darkToggleBtn = document.getElementById('dark-mode-switch');
+        const iconNode = darkToggleBtn.querySelector('i');
+        darkToggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             if(document.body.classList.contains('dark-mode')) {
-                icon.className = 'fas fa-sun';
+                iconNode.className = 'fas fa-sun';
             } else {
-                icon.className = 'fas fa-moon';
+                iconNode.className = 'fas fa-moon';
             }
         });
 
-        // 2. Search Popup overlay toggle mechanism Control
-        const searchTrigger = document.getElementById('search-trigger');
-        const searchLayer = document.getElementById('search-layer');
-        searchTrigger.addEventListener('click', () => {
-            searchLayer.style.display = (searchLayer.style.display === 'flex') ? 'none' : 'flex';
-        });
-        window.addEventListener('click', (e) => {
-            if(e.target === searchLayer) searchLayer.style.display = 'none';
-        });
-
-        // 3. Document Reading Tracker & Dynamic Back to Top UI Display Loop
+        // 2. Reading Progress Indicator Line & Back To Top Tracker Logic Engine
         window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('progress-bar').style.width = scrolled + '%';
+            const currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const documentTotalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const percentageProgress = (currentScroll / documentTotalHeight) * 100;
+            document.getElementById('progress-bar').style.width = percentageProgress + '%';
 
-            const btt = document.getElementById('back-to-top');
-            if(winScroll > 450) { btt.style.display = 'flex'; } else { btt.style.display = 'none'; }
+            const bttContainer = document.getElementById('back-to-top');
+            if(currentScroll > 400) { bttContainer.style.display = 'flex'; } else { bttContainer.style.display = 'none'; }
         });
 
         document.getElementById('back-to-top').addEventListener('click', () => {
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
-        // 4. Live Automatic Timestamp Calendar Configuration Engine
-        document.getElementById('live-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
-
-        // 5. Code Injector Box Clipboard Facility System 
-        document.querySelectorAll('pre').forEach((block) => {
-            const button = document.createElement('button');
-            button.className = 'copy-btn';
-            button.innerText = 'COPY';
-            block.appendChild(button);
-            button.addEventListener('click', () => {
-                const text = block.innerText.replace('COPY', '');
-                navigator.clipboard.writeText(text).then(() => {
-                    button.innerText = 'COPIED!';
-                    setTimeout(() => { button.innerText = 'COPY'; }, 2000);
-                });
-            });
-        });
+        // 3. Automated Localized Structural Live Calendar Watch Engine
+        document.getElementById('live-date-engine').innerText = new Date().toLocaleDateString('hi-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         //]]>
     </script>
 </body>
