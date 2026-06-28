@@ -6,184 +6,220 @@
     <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
     <title><data:view.title.escaped/></title>
     
-    <!-- Premium SEO, OpenGraph & Canonical -->
+    <!-- Ultra SEO, OpenGraph & JSON-LD Rich Schema -->
     <b:if cond='data:view.isHomepage'>
         <meta content='website' property='og:type'/>
-        <meta content='HadotiEMitra - Premium Professional News &amp; Services Portal' property='og:title'/>
-    <b:else/>
+        <meta content='HadotiEMitra - Premium Digital Services &amp; News Hub' property='og:title'/>
+    <b:elseif cond='data:view.isPost'/>
         <meta content='article' property='og:type'/>
+        <meta expr:content='data:view.title.escaped' property='og:title'/>
+        <meta expr:content='data:view.description.escaped' property='og:description'/>
     </b:if>
     <link expr:href='data:view.url.canonical' rel='canonical'/>
     
-    <!-- Professional Google Fonts & Icons -->
+    <!-- Premium Font Integration -->
     <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap' rel='stylesheet'/>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
 
     <b:skin><![CDATA[
     /*------------------------------------------------------------
-    PREMIUM GRADIENT COLOR SYSTEM (HadotiEMitra Theme)
+    ULTRA GRADIENT COLOR VARIABLES & CORE ARCHITECTURE
     ------------------------------------------------------------*/
     :root {
         --primary-gradient: linear-gradient(135deg, #ff007f 0%, #7928ca 100%);
         --secondary-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+        --accent-glow: linear-gradient(90deg, #ff007f, #7928ca, #4facfe, #ff007f);
         --accent-color: #ff007f;
         --dark-bg: #090d16;
         --dark-card: #131c2e;
-        --light-bg: #f3f4f6;
+        --light-bg: #f4f6f9;
         --light-card: #ffffff;
         --text-main: #1e293b;
         --text-muted: #64748b;
         --font-premium: 'Plus Jakarta Sans', sans-serif;
-        --radius-prm: 16px;
-        --shadow-prm: 0 10px 30px -5px rgba(121, 40, 202, 0.15);
+        --radius-prm: 18px;
+        --radius-sm: 10px;
+        --shadow-prm: 0 15px 35px -5px rgba(121, 40, 202, 0.12);
         --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Dark Mode Variables Toggle */
+    /* System Dark Mode Override */
     body.dark-mode {
         --light-bg: var(--dark-bg);
         --light-card: var(--dark-card);
         --text-main: #f8fafc;
         --text-muted: #94a3b8;
-        --shadow-prm: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        --shadow-prm: 0 15px 40px -10px rgba(0, 0, 0, 0.6);
     }
 
-    /* Core Reset */
+    /* Core Reset CSS */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-premium); background-color: var(--light-bg); color: var(--text-main); transition: var(--transition); overflow-x: hidden; }
+    body { font-family: var(--font-premium); background-color: var(--light-bg); color: var(--text-main); transition: var(--transition); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; transition: var(--transition); }
-    img { max-width: 100%; height: auto; display: block; }
-
-    /* Reading Progress Bar */
-    #progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: var(--primary-gradient); z-index: 9999; transition: width 0.1s ease; }
-
-    /* Global Layout Container */
-    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    img { max-width: 100%; height: auto; display: block; border-radius: var(--radius-sm); }
     
-    /* Top Bar & Breaking News (Premium Neon Look) */
-    .top-bar { background: #0b0f19; color: #fff; padding: 12px 0; font-size: 13px; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .ticker-wrap { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
-    .ticker-box { display: flex; align-items: center; overflow: hidden; width: 70%; }
-    .ticker-title { background: var(--primary-gradient); padding: 6px 14px; font-weight: 700; border-radius: 6px; margin-right: 15px; white-space: nowrap; box-shadow: 0 4px 12px rgba(255, 0, 127, 0.3); font-size: 11px; letter-spacing: 1px; }
-    .ticker-content { display: inline-block; white-space: nowrap; animation: ticker 30s linear infinite; color: #e2e8f0; }
+    /* Reading Progress Tracker */
+    #progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 5px; background: var(--primary-gradient); z-index: 99999; transition: width 0.1s ease; }
+
+    /* Layout Wrapper */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Flash News Ticker Layout */
+    .top-bar { background: #05070f; color: #fff; padding: 14px 0; font-size: 13px; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .ticker-wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .ticker-box { display: flex; align-items: center; overflow: hidden; width: 75%; }
+    .ticker-title { background: var(--primary-gradient); padding: 6px 16px; font-weight: 800; border-radius: 8px; margin-right: 15px; white-space: nowrap; box-shadow: 0 4px 15px rgba(255, 0, 127, 0.35); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+    .ticker-content { display: inline-block; white-space: nowrap; animation: ticker 35s linear infinite; color: #cbd5e1; }
     @keyframes ticker { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-    /* Header & Navigation (Blur Glass Effect) */
-    header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.03); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
-    body.dark-mode header { background: rgba(19, 28, 46, 0.8); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    /* Sticky Glassmorphic Header Navigation */
+    header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 9999; box-shadow: 0 4px 30px rgba(0,0,0,0.02); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.04); }
+    body.dark-mode header { background: rgba(19, 28, 46, 0.85); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
     
-    /* Premium Logo Style */
-    .logo h1 { font-size: 26px; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
+    /* Brand Identity Logo Style */
+    .logo h1 { font-size: 28px; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; position: relative; }
     
-    /* Modern Nav Menu */
-    nav ul { display: flex; list-style: none; gap: 28px; }
-    nav ul li a { font-weight: 600; font-size: 15px; color: var(--text-main); position: relative; padding: 5px 0; }
-    nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--primary-gradient); transition: var(--transition); }
+    /* Professional Mega Navigation System */
+    nav ul { display: flex; list-style: none; gap: 32px; }
+    nav ul li a { font-weight: 600; font-size: 15px; color: var(--text-main); position: relative; padding: 8px 0; display: flex; align-items: center; gap: 6px; }
+    nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--primary-gradient); border-radius: 2px; transition: var(--transition); }
     nav ul li a:hover::after { width: 100%; }
 
-    /* Action Buttons */
-    .nav-actions { display: flex; align-items: center; gap: 20px; }
-    .action-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--light-bg); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); border: 1px solid rgba(0,0,0,0.05); }
-    .action-btn:hover { transform: scale(1.1); background: var(--primary-gradient); color: #fff; }
+    /* Floating Control Buttons */
+    .nav-actions { display: flex; align-items: center; gap: 15px; }
+    .action-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--light-bg); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); border: 1px solid rgba(0,0,0,0.04); color: var(--text-main); }
+    .action-btn:hover { transform: scale(1.08) rotate(15deg); background: var(--primary-gradient); color: #fff; box-shadow: 0 8px 20px rgba(121, 40, 202, 0.2); }
 
-    /* Search Popup Box */
-    .search-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(9, 13, 22, 0.9); z-index: 9999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-    .search-dialog { background: var(--light-card); padding: 35px; border-radius: var(--radius-prm); width: 90%; max-width: 550px; box-shadow: var(--shadow-prm); border: 1px solid rgba(255,255,255,0.1); }
-    .search-dialog input { width: 100%; padding: 16px; border: 2px solid rgba(0,0,0,0.05); border-radius: 10px; background: var(--light-bg); color: var(--text-main); font-size: 16px; font-family: var(--font-premium); font-weight: 500; outline: none; transition: var(--transition); }
-    .search-dialog input:focus { border-color: var(--accent-color); }
+    /* Live Search Popup Overlay */
+    .search-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 7, 15, 0.95); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
+    .search-dialog { background: var(--light-card); padding: 40px; border-radius: var(--radius-prm); width: 92%; max-width: 600px; box-shadow: var(--shadow-prm); border: 1px solid rgba(255,255,255,0.08); position: relative; }
+    .search-dialog input { width: 100%; padding: 18px; border: 2px solid rgba(0,0,0,0.05); border-radius: 12px; background: var(--light-bg); color: var(--text-main); font-size: 16px; font-family: var(--font-premium); font-weight: 600; outline: none; transition: var(--transition); }
+    .search-dialog input:focus { border-color: var(--accent-color); box-shadow: 0 0 15px rgba(255,0,127,0.15); }
 
-    /* Hero Gradient Section */
-    .hero-banner { background: var(--primary-gradient); padding: 50px 0; color: #fff; border-radius: var(--radius-prm); margin-top: 30px; text-align: center; box-shadow: 0 15px 35px rgba(121, 40, 202, 0.3); }
-    .hero-banner h2 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
-    .hero-banner p { font-size: 16px; opacity: 0.9; }
+    /* Ultra Modern Hero Layout Carousel Space */
+    .hero-banner { background: var(--primary-gradient); padding: 60px 40px; color: #fff; border-radius: var(--radius-prm); margin-top: 35px; text-align: center; box-shadow: 0 20px 45px rgba(121, 40, 202, 0.25); position: relative; overflow: hidden; }
+    .hero-banner h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .hero-banner p { font-size: 16px; opacity: 0.95; font-weight: 500; }
+    .hero-banner::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); pointer-events: none; }
 
-    /* Main Responsive Grid Layout */
-    .main-wrapper { display: grid; grid-template-columns: 1fr; gap: 35px; margin-top: 40px; }
-    @media(min-width: 992px) { .main-wrapper { grid-template-columns: 2.2fr 1fr; } }
+    /* Grid Architecture Systems */
+    .main-wrapper { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 45px; }
+    @media(min-width: 992px) { .main-wrapper { grid-template-columns: 2.3fr 1fr; } }
 
-    /* Premium Grid News Cards */
-    .posts-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
-    @media(min-width: 600px) { .posts-grid { grid-template-columns: 1fr 1fr; } }
+    /* Homepage Posts Grid Style */
+    .posts-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+    @media(min-width: 650px) { .posts-grid { grid-template-columns: 1fr 1fr; } }
     
-    .card { background: var(--light-card); border-radius: var(--radius-prm); overflow: hidden; box-shadow: var(--shadow-prm); transition: var(--transition); border: 1px solid rgba(0,0,0,0.03); display: flex; flex-direction: column; }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(121, 40, 202, 0.25); }
-    .card-thumb { height: 230px; background: #e2e8f0; position: relative; overflow: hidden; }
+    .card { background: var(--light-card); border-radius: var(--radius-prm); overflow: hidden; box-shadow: var(--shadow-prm); transition: var(--transition); border: 1px solid rgba(0,0,0,0.02); display: flex; flex-direction: column; height: 100%; }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -10px rgba(121, 40, 202, 0.22); }
+    .card-thumb { height: 240px; background: #e2e8f0; position: relative; overflow: hidden; }
     .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
     .card:hover .card-thumb img { transform: scale(1.08); }
     
-    .badge { position: absolute; top: 15px; left: 15px; background: var(--secondary-gradient); color: #fff; padding: 6px 14px; font-size: 11px; font-weight: 700; border-radius: 8px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(79, 172, 254, 0.3); }
-    .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .card-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; display: flex; gap: 15px; font-weight: 500; }
-    .card-meta i { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .card-title { font-size: 20px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; color: var(--text-main); }
-    .card-title a:hover { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .card-text { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    
-    /* Read More Gradient Button */
-    .read-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; width: fit-content; }
-    .read-btn i { font-size: 11px; transition: var(--transition); -webkit-text-fill-color: initial; color: var(--accent-color); }
-    .card:hover .read-btn i { transform: translateX(5px); }
+    .badge { position: absolute; top: 18px; left: 18px; background: var(--secondary-gradient); color: #fff; padding: 6px 14px; font-size: 11px; font-weight: 700; border-radius: 8px; text-transform: uppercase; box-shadow: 0 6px 15px rgba(79, 172, 254, 0.35); }
+    .card-content { padding: 28px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; display: flex; gap: 16px; font-weight: 600; }
+    .card-meta i { color: var(--accent-color); }
+    .card-title { font-size: 22px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; color: var(--text-main); }
+    .card-text { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+    .read-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; width: fit-content; }
+    .read-btn i { transition: var(--transition); color: var(--accent-color); -webkit-text-fill-color: initial; }
+    .card:hover .read-btn i { transform: translateX(6px); }
 
-    /* Sidebar Advanced Widgets */
+    /* ------------------------------------------------------------
+    ADVANCED INNER POST CONTENT PAGE STYLING (The Fix)
+    ------------------------------------------------------------*/
+    .post-body-container { background: var(--light-card); padding: 40px; border-radius: var(--radius-prm); box-shadow: var(--shadow-prm); border: 1px solid rgba(0,0,0,0.02); }
+    .post-main-title { font-size: 34px; font-weight: 800; line-height: 1.3; margin-bottom: 20px; color: var(--text-main); }
+    .breadcrumb { display: flex; gap: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 25px; font-weight: 600; }
+    .breadcrumb a:hover { color: var(--accent-color); }
+    
+    /* Table Of Contents UI */
+    .table-of-contents { background: var(--light-bg); border-left: 5px solid var(--accent-color); padding: 20px; border-radius: var(--radius-sm); margin: 30px 0; }
+    .toc-title { font-weight: 800; font-size: 16px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+    .toc-list { list-style: none; padding-left: 5px; }
+    .toc-list li { margin-bottom: 8px; font-size: 14px; font-weight: 600; }
+    
+    /* Typography inside posts */
+    .post-content-area { font-size: 16px; line-height: 1.8; color: var(--text-main); }
+    .post-content-area h2, .post-content-area h3 { margin: 35px 0 15px; font-weight: 800; color: var(--text-main); }
+    .post-content-area h2 { font-size: 26px; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 8px; }
+    .post-content-area p { margin-bottom: 20px; }
+    
+    /* Dynamic Code Block Component & Copy Button */
+    pre { background: #0f172a; color: #f8fafc; padding: 20px; border-radius: var(--radius-sm); overflow-x: auto; position: relative; margin: 30px 0; font-family: monospace; }
+    .copy-btn { position: absolute; top: 12px; right: 12px; background: var(--primary-gradient); border: none; color: white; padding: 5px 12px; font-size: 11px; font-weight: 700; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    
+    /* Premium Author Details Widget Box */
+    .author-box { display: flex; gap: 20px; align-items: center; background: var(--light-bg); padding: 25px; border-radius: var(--radius-sm); margin-top: 50px; border: 1px solid rgba(0,0,0,0.03); }
+    .author-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); }
+    .author-info h4 { font-size: 18px; font-weight: 800; margin-bottom: 5px; }
+    .author-info p { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+
+    /* Custom Advanced Comment System area */
+    .comment-area-box { margin-top: 50px; background: var(--light-card); padding: 35px; border-radius: var(--radius-prm); box-shadow: var(--shadow-prm); }
+    .comment-title { font-size: 20px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; }
+
+    /* Professional Sidebar Modules */
     .sidebar { display: flex; flex-direction: column; gap: 35px; }
-    .widget { background: var(--light-card); padding: 28px; border-radius: var(--radius-prm); box-shadow: var(--shadow-prm); border: 1px solid rgba(0,0,0,0.02); }
-    .widget-title { font-size: 16px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; position: relative; padding-bottom: 10px; letter-spacing: 0.5px; }
-    .widget-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 4px; background: var(--primary-gradient); border-radius: 2px; }
+    .widget { background: var(--light-card); padding: 30px; border-radius: var(--radius-prm); box-shadow: var(--shadow-prm); border: 1px solid rgba(0,0,0,0.02); }
+    .widget-title { font-size: 16px; font-weight: 800; text-transform: uppercase; margin-bottom: 22px; position: relative; padding-bottom: 12px; letter-spacing: 0.5px; }
+    .widget-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 45px; height: 4px; background: var(--primary-gradient); border-radius: 2px; }
 
-    /* Footer Section with HadotiEMitra Copyright */
-    footer { background: #070a12; color: #94a3b8; padding: 70px 0 30px; margin-top: 80px; border-top: 2px solid rgba(121, 40, 202, 0.2); }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 50px; }
-    .footer-col h3 { color: #fff; margin-bottom: 25px; font-size: 20px; font-weight: 700; position: relative; }
-    .footer-col h3::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 30px; height: 3px; background: var(--secondary-gradient); }
-    .footer-col p { font-size: 14px; line-height: 1.8; }
+    /* Heavy Premium Footer Columns Layout */
+    footer { background: #05070f; color: #94a3b8; padding: 80px 0 35px; margin-top: 90px; border-top: 3px solid rgba(121, 40, 202, 0.25); }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 45px; margin-bottom: 50px; }
+    .footer-col h3 { color: #fff; margin-bottom: 25px; font-size: 20px; font-weight: 800; position: relative; }
+    .footer-col h3::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 35px; height: 3px; background: var(--secondary-gradient); }
+    .footer-col p { font-size: 14px; line-height: 1.8; color: #94a3b8; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; font-size: 14px; font-weight: 600; }
+    .footer-links li a:hover { color: #fff; padding-left: 5px; }
     
-    /* 100% Locked Copyright Section */
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; text-align: center; font-size: 14px; font-weight: 500; color: #64748b; }
-    .footer-bottom a { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+    /* 100% Secure Private Copyright Brand Stamp */
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 30px; text-align: center; font-size: 14px; font-weight: 600; color: #475569; }
+    .footer-bottom a { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
 
-    /* Advanced Back to Top */
-    #back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--primary-gradient); color: #fff; width: 46px; height: 46px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 999; box-shadow: 0 8px 25px rgba(255, 0, 127, 0.4); border: none; transition: var(--transition); }
-    #back-to-top:hover { transform: translateY(-5px); }
+    /* UI Navigation Operations Button */
+    #back-to-top { position: fixed; bottom: 35px; right: 35px; background: var(--primary-gradient); color: #fff; width: 48px; height: 48px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 9999; box-shadow: 0 10px 25px rgba(255, 0, 127, 0.4); border: none; transition: var(--transition); }
+    #back-to-top:hover { transform: translateY(-6px); }
     ]]></b:skin>
 </head>
 
 <body>
-    <!-- Advanced Reading Progress Indicator -->
+    <!-- Real-time Loading Scroll Bar -->
     <div id='progress-bar'/>
 
-    <!-- Premium Header Top Bar -->
+    <!-- Hot Breaking Flash System Header -->
     <div class='top-bar'>
         <div class='container ticker-wrap'>
             <div class='ticker-box'>
-                <div class='ticker-title'><i class='fas fa-bolt animate-pulse'/> FLASH NEWS</div>
+                <div class='ticker-title'><i class='fas fa-fire animate-pulse'/> LATEST INFO</div>
                 <div class='ticker-content'>
-                    🔥 Welcome to HadotiEMitra Premium Portal - Core Web Vitals Optimized, Instant Load Speed and Google Discover Layout Active!
+                    🚀 Welcome to HadotiEMitra Premium Private Template V2 - 100% Core Web Vitals Standard Enabled, Optimized for Fast Indexing and Discover Feeds!
                 </div>
             </div>
-            <div id='live-date' style='font-weight: 600; color: #94a3b8;'/>
+            <div id='live-date' style='font-weight: 700; color: #64748b;'/>
         </div>
     </div>
 
-    <!-- Main Navigation Header -->
+    <!-- Sticky Main Navigation Center -->
     <header>
         <div class='container header-inner'>
-            <!-- Exclusive Brand Identity Logo -->
             <div class='logo'>
                 <a expr:href='data:blog.homepageUrl'><h1>HadotiEMitra</h1></a>
             </div>
             
-            <!-- Navigation System -->
             <nav>
                 <ul>
-                    <li><a expr:href='data:blog.homepageUrl'><i class='fa-solid fa-house' style='margin-right:5px;'/> Home</a></li>
-                    <li><a href='/search/label/Services'>Online Services</a></li>
-                    <li><a href='/search/label/Updates'>Latest Updates</a></li>
-                    <li><a href='/search/label/Tech'>Tech News</a></li>
+                    <li><a expr:href='data:blog.homepageUrl'><i class='fa-solid fa-house'/> Home</a></li>
+                    <li><a href='/search/label/Services'><i class='fa-solid fa-laptop-code'/> Digital Services</a></li>
+                    <li><a href='/search/label/Schemes'><i class='fa-solid fa-landmark'/> Schemes</a></li>
+                    <li><a href='/search/label/Jobs'><i class='fa-solid fa-briefcase'/> Latest Updates</a></li>
                 </ul>
             </nav>
             
-            <!-- Functional Icons (Dark Mode & Search Popup) -->
             <div class='nav-actions'>
                 <div class='action-btn' id='search-trigger'><i class='fas fa-search'/></div>
                 <div class='action-btn' id='dark-mode-toggle'><i class='fas fa-moon'/></div>
@@ -191,27 +227,29 @@
         </div>
     </header>
 
-    <!-- Ajax Overlay Search Dialog -->
+    <!-- Ajax Active Modern Search Portal popup Wrapper -->
     <div class='search-overlay' id='search-layer'>
         <div class='search-dialog'>
-            <h3 style='margin-bottom:15px; font-weight:800;'>Search Portal</h3>
+            <h3 style='margin-bottom:18px; font-weight:800; letter-spacing:-0.5px;'>Search Engine Portal</h3>
             <form action='/search' method='get'>
-                <input autocomplete='off' name='q' placeholder='Type anything &amp; hit enter...' type='text'/>
+                <input autocomplete='off' name='q' placeholder='Type keywords here &amp; press enter...' type='text'/>
             </form>
         </div>
     </div>
 
     <div class='container'>
-        <!-- Hero Introduction Banner -->
-        <div class='hero-banner'>
-            <h2>HadotiEMitra Digital Hub</h2>
-            <p>Your ultimate destination for the fastest information, news, and digital services.</p>
-        </div>
+        <!-- Conditional Homepage Hero Banner Display -->
+        <b:if cond='data:view.isHomepage'>
+            <div class='hero-banner'>
+                <h2>HadotiEMitra Elite Dynamic Hub</h2>
+                <p>The premium portal optimized for high speed distribution of regional digital resources and public announcements.</p>
+            </div>
+        </b:if>
 
-        <!-- Layout Structural Wrapper -->
+        <!-- Main Fluid Double Grid Infrastructure layout -->
         <div class='main-wrapper'>
             
-            <!-- Main Feed Content Area -->
+            <!-- Core Feed Engine Area -->
             <main class='main-content'>
                 <b:section class='main-section' id='main-section' showaddelement='true'>
                     <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2'>
@@ -219,48 +257,104 @@
                             <b:widget-setting name='showItemDate'>true</b:widget-setting>
                             <b:widget-setting name='showAuthor'>true</b:widget-setting>
                         </b:widget-settings>
+                        
                         <b:includable id='main' var='this'>
-                            <div class='posts-grid'>
-                                <b:loop values='data:posts' var='post'>
-                                    <article class='card'>
-                                        <div class='card-thumb'>
-                                            <span class='badge'>Updates</span>
-                                            <b:if cond='data:post.featuredImage'>
-                                                <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
-                                            <b:else/>
-                                                <img alt='HadotiEMitra Default' loading='lazy' src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600'/>
-                                            </b:if>
-                                        </div>
-                                        <div class='card-content'>
-                                            <div>
-                                                <div class='card-meta'>
-                                                    <span><i class='far fa-calendar-alt'/> <data:post.date/></span>
-                                                    <span><i class='far fa-user'/> By Admin</span>
-                                                </div>
-                                                <h2 class='card-title'><a expr:href='data:post.url'><data:post.title/></a></h2>
-                                                <p class='card-text'><data:post.snippet/></p>
+                            <!-- IF USER IS ON HOMEPAGE OR CATEGORY GRID VIEW -->
+                            <b:if cond='data:view.isMultipleItems'>
+                                <div class='posts-grid'>
+                                    <b:loop values='data:posts' var='post'>
+                                        <article class='card'>
+                                            <div class='card-thumb'>
+                                                <span class='badge'>Official</span>
+                                                <b:if cond='data:post.featuredImage'>
+                                                    <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
+                                                <b:else/>
+                                                    <img alt='HadotiEMitra Default Thumbnail' loading='lazy' src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600'/>
+                                                </b:if>
                                             </div>
-                                            <a class='read-btn' expr:href='data:post.url'>Read Article <i class='fas fa-arrow-right'/></a>
+                                            <div class='card-content'>
+                                                <div>
+                                                    <div class='card-meta'>
+                                                        <span><i class='far fa-calendar-check'/> <data:post.date/></span>
+                                                        <span><i class='far fa-user'/> Admin</span>
+                                                    </div>
+                                                    <h2 class='card-title'><a expr:href='data:post.url'><data:post.title/></a></h2>
+                                                    <p class='card-text'><data:post.snippet/></p>
+                                                </div>
+                                                <a class='read-btn' expr:href='data:post.url'>Explore Post <i class='fas fa-arrow-right'/></a>
+                                            </div>
+                                        </article>
+                                    </b:loop>
+                                </div>
+                                
+                            <!-- ELSE IF THE USER OPENS A SINGLE POST (Fills the Post View Body correctly) -->
+                            <b:else/>
+                                <b:loop values='data:posts' var='post'>
+                                    <article class='post-body-container'>
+                                        <!-- Breadcrumb Navigation Component -->
+                                        <div class='breadcrumb'>
+                                            <a expr:href='data:blog.homepageUrl'>Home</a> <i class='fas fa-chevron-right' style='font-size:10px; align-self:center;'/> <span>Post View</span>
+                                        </div>
+                                        
+                                        <!-- Post Main Title Statement -->
+                                        <h1 class='post-main-title'><data:post.title/></h1>
+                                        
+                                        <!-- Post Dynamic Author and Time Meta details -->
+                                        <div class='card-meta' style='margin-bottom:30px; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:15px;'>
+                                            <span><i class='far fa-calendar-alt'/> Published: <data:post.date/></span>
+                                            <span><i class='far fa-user'/> Author: <data:post.author.name/></span>
+                                            <span><i class='far fa-eye'/> Verified Content</span>
+                                        </div>
+
+                                        <!-- Premium Static Auto Table of Contents Structure Layout -->
+                                        <div class='table-of-contents'>
+                                            <div class='toc-title'><i class='fas fa-list-ol'/> Quick Navigation Menu</div>
+                                            <ul class='toc-list'>
+                                                <li>1. Introduction &amp; Core Overview</li>
+                                                <li>2. Main Eligibility Criteria &amp; Updates</li>
+                                                <li>3. Step by Step Online Application Process</li>
+                                                <li>4. Summary Guidelines &amp; Direct Links</li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Real Main Post Dynamic Data Content Output Area -->
+                                        <div class='post-content-area'>
+                                            <data:post.body/>
+                                        </div>
+
+                                        <!-- Author Signature Widget Board -->
+                                        <div class='author-box'>
+                                            <img alt='HadotiEMitra Head Author' class='author-avatar' src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'/>
+                                            <div class='author-info'>
+                                                <h4>HadotiEMitra Editorial Board</h4>
+                                                <p>Providing vetted, super fast authentic government schema updates, tech documentation, and digital solution guidelines across Rajasthan.</p>
+                                            </div>
                                         </div>
                                     </article>
+
+                                    <!-- Premium Native Comment Systems Integration Section -->
+                                    <div class='comment-area-box'>
+                                        <h3 class='comment-title'><i class='far fa-comments'/> Document Discussion Feed</h3>
+                                        <b:include data='post' name='comments'/>
+                                    </div>
                                 </b:loop>
-                            </div>
+                            </b:if>
                         </b:includable>
                     </b:widget>
                 </b:section>
             </main>
 
-            <!-- Sticky Sidebar Framework Layout -->
+            <!-- Ultra Modern Sticky Functional Sidebar Section Grid -->
             <aside class='sidebar'>
                 <b:section class='sidebar-section' id='sidebar-section' showaddelement='true'>
-                    <b:widget id='PopularPosts1' locked='false' title='🔥 Trending Content' type='PopularPosts' version='2'>
+                    <b:widget id='PopularPosts1' locked='false' title='🔥 Hot Trends Now' type='PopularPosts' version='2'>
                         <b:includable id='main'>
                             <div class='widget'>
                                 <h3 class='widget-title'><data:title/></h3>
                                 <ul style='list-style:none;'>
                                     <b:loop values='data:posts' var='post'>
-                                        <li style='margin-bottom:15px; font-weight:600; font-size:14px; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:10px;'>
-                                            <a expr:href='data:post.url'><data:post.title/></a>
+                                        <li style='margin-bottom:18px; font-weight:700; font-size:14px; border-bottom:1px solid rgba(0,0,0,0.04); padding-bottom:12px; line-height:1.4;'>
+                                            <a expr:href='data:post.url' style='color:var(--text-main);'><data:post.title/></a>
                                         </li>
                                     </b:loop>
                                 </ul>
@@ -273,36 +367,44 @@
         </div>
     </div>
 
-    <!-- Responsive Scroll To Top Trigger -->
+    <!-- Active Back To Top Navigation Action Circle -->
     <div id='back-to-top'><i class='fas fa-chevron-up'/></div>
 
-    <!-- Professional Grid System Footer -->
+    <!-- Ultra Massive Heavy Grid Footer Setup Block -->
     <footer>
         <div class='container footer-grid'>
             <div class='footer-col'>
-                <h3 style='color:#fff; font-weight:800; font-size:22px; margin-bottom:15px;'>HadotiEMitra</h3>
-                <p>Rajasthan's premier informational and digital services portal designed to maximize modern web capability.</p>
+                <h3 style='color:#fff; font-weight:800; font-size:24px; margin-bottom:15px; background:var(--primary-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent;'>HadotiEMitra</h3>
+                <p>The premium, secure state-of-the-art content network delivering blazing fast e-governance, financial schemes, and technical insights directly to citizens.</p>
             </div>
             <div class='footer-col'>
-                <h3>Core Services</h3>
-                <p>E-Mitra Updates<br/>Government Schemes<br/>Technical Education</p>
+                <h3>Digital Services</h3>
+                <ul class='footer-links'>
+                    <li><a href='#'>Online Applications</a></li>
+                    <li><a href='#'>E-Mitra Support</a></li>
+                    <li><a href='#'>Verification Desk</a></li>
+                </ul>
             </div>
             <div class='footer-col'>
-                <h3>Support Hub</h3>
-                <p>Privacy Policy<br/>Disclaimer<br/>Contact Support</p>
+                <h3>Legal &amp; Policy</h3>
+                <ul class='footer-links'>
+                    <li><a href='#'>Privacy Policy</a></li>
+                    <li><a href='#'>Terms and Conditions</a></li>
+                    <li><a href='#'>Disclaimer Policy</a></li>
+                </ul>
             </div>
         </div>
         
-        <!-- Private Unalterable Copyright Footer -->
+        <!-- Private 100% Locked Copyright Block - HadotiEMitra Exclusive -->
         <div class='footer-bottom'>
-            &amp;copy; 2026 <a href='https://www.hadotiemitra.com/'>HadotiEMitra</a>. All Rights Reserved. Designed for Maximum Performance.
+            &amp;copy; 2026 <a href='https://www.hadotiemitra.com/'>HadotiEMitra</a>. All Rights Private &amp; Reserved. Developed with High Performance Framework.
         </div>
     </footer>
 
-    <!-- Modern Vanilla JS Core Module -->
+    <!-- Complex Pure Vanilla Dynamic Component Scripts Logic Module -->
     <script>
         //<![CDATA[
-        // 1. Fluid Dark Mode Transition Engine
+        // 1. Dark Mode State Management Mechanics
         const darkToggle = document.getElementById('dark-mode-toggle');
         const icon = darkToggle.querySelector('i');
         darkToggle.addEventListener('click', () => {
@@ -314,7 +416,7 @@
             }
         });
 
-        // 2. Overlay Popup Search Toggle Controller
+        // 2. Search Popup overlay toggle mechanism Control
         const searchTrigger = document.getElementById('search-trigger');
         const searchLayer = document.getElementById('search-layer');
         searchTrigger.addEventListener('click', () => {
@@ -324,7 +426,7 @@
             if(e.target === searchLayer) searchLayer.style.display = 'none';
         });
 
-        // 3. Dynamic Progress Bar & Responsive Back to Top Logic
+        // 3. Document Reading Tracker & Dynamic Back to Top UI Display Loop
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -332,15 +434,30 @@
             document.getElementById('progress-bar').style.width = scrolled + '%';
 
             const btt = document.getElementById('back-to-top');
-            if(winScroll > 400) { btt.style.display = 'flex'; } else { btt.style.display = 'none'; }
+            if(winScroll > 450) { btt.style.display = 'flex'; } else { btt.style.display = 'none'; }
         });
 
         document.getElementById('back-to-top').addEventListener('click', () => {
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
-        // 4. Live Automatic Regional Date Engine
+        // 4. Live Automatic Timestamp Calendar Configuration Engine
         document.getElementById('live-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+
+        // 5. Code Injector Box Clipboard Facility System 
+        document.querySelectorAll('pre').forEach((block) => {
+            const button = document.createElement('button');
+            button.className = 'copy-btn';
+            button.innerText = 'COPY';
+            block.appendChild(button);
+            button.addEventListener('click', () => {
+                const text = block.innerText.replace('COPY', '');
+                navigator.clipboard.writeText(text).then(() => {
+                    button.innerText = 'COPIED!';
+                    setTimeout(() => { button.innerText = 'COPY'; }, 2000);
+                });
+            });
+        });
         //]]>
     </script>
 </body>
