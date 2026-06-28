@@ -5,20 +5,14 @@
     <meta charset='utf-8'/>
     <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
     <title><data:view.title.escaped/></title>
-    
-    <!-- Core SEO Tags -->
     <link expr:href='data:view.url.canonical' rel='canonical'/>
-    <b:if cond='data:view.isHomepage'>
-        <meta content='website' property='og:type'/>
-    </b:if>
 
-    <!-- Typography & Icons -->
-    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&amp;family=Noto+Sans+Devanagari:wght@500;700;800&amp;display=swap' rel='stylesheet'/>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800&amp;family=Noto+Sans+Devanagari:wght@600;800&amp;display=swap' rel='stylesheet'/>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
 
     <b:skin><![CDATA[
     /*------------------------------------------------------------
-    PREMIUM NEWS STYLING CORE SYSTEM
+    HADOTI-NEWS PREMIUM ESSENTIAL DESIGN SKIN
     ------------------------------------------------------------*/
     :root {
         --primary-gradient: linear-gradient(135deg, #ff1e56 0%, #ffac41 50%, #3232ff 100%);
@@ -29,9 +23,6 @@
         --text-main: #0f172a;
         --text-muted: #475569;
         --accent-color: #ff1e56;
-        --radius-mega: 16px;
-        --shadow-mega: 0 20px 40px rgba(15, 23, 42, 0.05);
-        --transition: all 0.3s ease;
     }
 
     body.dark-mode {
@@ -42,93 +33,89 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif; background-color: var(--light-bg); color: var(--text-main); transition: var(--transition); }
+    body { font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif; background-color: var(--light-bg); color: var(--text-main); transition: all 0.3s ease; }
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; height: auto; display: block; border-radius: 10px; }
+    img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
 
-    .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
     
-    /* Top Bar Live Ticker */
-    .top-bar { background: #090d16; color: #fff; padding: 12px 0; font-size: 13px; }
-    .ticker-wrap { display: flex; align-items: center; justify-content: space-between; }
-    .ticker-title { background: var(--primary-gradient); padding: 5px 12px; font-weight: 800; border-radius: 6px; margin-right: 15px; white-space: nowrap; }
-    .ticker-content { display: inline-block; white-space: nowrap; animation: ticker-live 30s linear infinite; font-weight: 700; color: #e2e8f0; }
+    /* Live Bulletin Ticker */
+    .top-bar { background: #090d16; color: #fff; padding: 12px 0; font-size: 13px; overflow: hidden; }
+    .ticker-wrap { display: flex; align-items: center; }
+    .ticker-title { background: var(--primary-gradient); padding: 4px 10px; font-weight: 800; border-radius: 4px; margin-right: 15px; white-space: nowrap; }
+    .ticker-content { display: inline-block; white-space: nowrap; animation: ticker-live 25s linear infinite; font-weight: 700; color: #e2e8f0; }
     @keyframes ticker-live { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-    /* Elegant Sticky Header Navbar */
-    header { background: var(--light-card); position: sticky; top: 0; z-index: 999; box-shadow: 0 2px 20px rgba(0,0,0,0.05); padding: 15px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
-    .header-inner { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-    @media(min-width: 992px) { .header-inner { flex-direction: row; justify-content: space-between; } }
+    /* Sticky Top Header Area */
+    header { background: var(--light-card); position: sticky; top: 0; z-index: 999; box-shadow: 0 2px 15px rgba(0,0,0,0.05); padding: 15px 0; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
     
-    .logo-branding h1 { font-size: 38px; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: -1px; }
-    .logo-sub { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 4px; text-transform: uppercase; margin-top: 2px; }
+    .logo-branding h1 { font-size: 32px; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
+    .logo-sub { display: block; font-size: 10px; font-weight: 700; color: var(--text-muted); letter-spacing: 3px; text-transform: uppercase; }
     
-    nav ul { display: flex; gap: 24px; }
-    nav ul li a { font-weight: 700; font-size: 15px; color: var(--text-main); padding: 5px 0; }
+    nav ul { display: flex; gap: 20px; }
+    nav ul li a { font-weight: 700; font-size: 14.5px; color: var(--text-main); }
     nav ul li a:hover { color: var(--accent-color); }
 
-    .mode-btn { width: 40px; height: 40px; border-radius: 10px; background: var(--light-bg); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); color: var(--text-main); }
+    .mode-btn { width: 38px; height: 38px; border-radius: 8px; background: var(--light-bg); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); color: var(--text-main); }
 
-    /* Grid Structural Split Layout */
-    .main-wrapper { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
-    @media(min-width: 992px) { .main-wrapper { grid-template-columns: 2.5fr 1fr; } }
+    /* Two Column Framework Layout */
+    .main-wrapper { display: grid; grid-template-columns: 1fr; gap: 35px; margin-top: 35px; }
+    @media(min-width: 992px) { .main-wrapper { grid-template-columns: 2.4fr 1fr; } }
 
-    /* Post Layout System Cards */
-    .posts-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-    @media(min-width: 650px) { .posts-grid { grid-template-columns: 1fr 1fr; } }
+    /* Clean News Cards Feed */
+    .posts-grid { display: grid; grid-template-columns: 1fr; gap: 25px; }
+    @media(min-width: 600px) { .posts-grid { grid-template-columns: 1fr 1fr; } }
     
-    .card { background: var(--light-card); border-radius: var(--radius-mega); overflow: hidden; box-shadow: var(--shadow-mega); border: 1px solid rgba(0,0,0,0.03); display: flex; flex-direction: column; height: 100%; transition: var(--transition); }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
-    .card-thumb { height: 220px; background: #0f172a; position: relative; }
+    .card { background: var(--light-card); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); display: flex; flex-direction: column; height: 100%; transition: all 0.3s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 20px 35px rgba(0,0,0,0.07); }
+    .card-thumb { height: 200px; background: #0f172a; position: relative; }
     .card-thumb img { width: 100%; height: 100%; object-fit: cover; }
     
-    .badge { position: absolute; top: 15px; left: 15px; background: var(--primary-gradient); color: #fff; padding: 4px 12px; font-size: 11px; font-weight: 800; border-radius: 6px; text-transform: uppercase; }
-    .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .card-meta { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; font-weight: 700; }
-    .card-title { font-size: 20px; font-weight: 800; line-height: 1.4; margin-bottom: 12px; color: var(--text-main); }
-    .card-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
-    .read-btn { font-weight: 800; font-size: 14px; color: var(--accent-color); }
+    .badge { position: absolute; top: 12px; left: 12px; background: var(--primary-gradient); color: #fff; padding: 3px 10px; font-size: 10.5px; font-weight: 800; border-radius: 4px; }
+    .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-meta { font-size: 12.5px; color: var(--text-muted); margin-bottom: 8px; font-weight: 700; }
+    .card-title { font-size: 18px; font-weight: 800; line-height: 1.4; margin-bottom: 10px; color: var(--text-main); }
+    .card-title a { color: inherit; }
+    .card-text { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px; }
+    .read-btn { font-weight: 800; font-size: 13.5px; color: var(--accent-color); }
 
-    /* Detailed Post Internal Typography */
-    .post-body-container { background: var(--light-card); padding: 35px; border-radius: var(--radius-mega); box-shadow: var(--shadow-mega); border: 1px solid rgba(0,0,0,0.03); }
-    .post-main-title { font-size: 34px; font-weight: 800; line-height: 1.35; margin-bottom: 20px; color: var(--text-main); }
-    .post-content-inner { font-size: 17px; line-height: 1.85; color: var(--text-main); }
-    .post-content-inner p { margin-bottom: 20px; }
+    /* Single Article Page Styling */
+    .post-body-container { background: var(--light-card); padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
+    .post-main-title { font-size: 30px; font-weight: 800; line-height: 1.3; margin-bottom: 15px; color: var(--text-main); }
+    .post-content-inner { font-size: 16.5px; line-height: 1.8; color: var(--text-main); }
+    .post-content-inner p { margin-bottom: 18px; }
     
-    /* Sidebar Architectural Components */
-    .sidebar-pane { display: flex; flex-direction: column; gap: 35px; }
-    .block-widget { background: var(--light-card); padding: 25px; border-radius: var(--radius-mega); box-shadow: var(--shadow-mega); border: 1px solid rgba(0,0,0,0.03); }
-    .block-title { font-size: 16px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; color: var(--text-main); border-bottom: 2px solid rgba(0,0,0,0.04); position: relative; }
-    .block-title::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 50px; height: 2px; background: var(--primary-gradient); }
-    
-    .search-input-group form { display: flex; gap: 8px; }
-    .search-field { flex-grow: 1; padding: 12px 15px; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; background: var(--light-bg); color: var(--text-main); font-weight: 600; outline: none; }
-    .search-go-btn { background: var(--primary-gradient); color: #fff; border: none; padding: 0 18px; border-radius: 10px; font-weight: 800; cursor: pointer; }
+    /* Sidebar Widgets Styling */
+    .sidebar-pane { display: flex; flex-direction: column; gap: 30px; }
+    .block-widget { background: var(--light-card); padding: 22px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); }
+    .block-title { font-size: 15px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; padding-bottom: 8px; color: var(--text-main); border-bottom: 2px solid rgba(0,0,0,0.04); }
 
-    .tag-cloud-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag-cloud-list li a { display: block; background: var(--light-bg); padding: 6px 14px; font-size: 13.5px; font-weight: 700; border-radius: 8px; }
+    .search-input-group form { display: flex; gap: 6px; }
+    .search-field { flex-grow: 1; padding: 10px 12px; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; background: var(--light-bg); color: var(--text-main); outline: none; }
+    .search-go-btn { background: var(--primary-gradient); color: #fff; border: none; padding: 0 15px; border-radius: 6px; font-weight: 800; cursor: pointer; }
 
-    /* Footer Framework */
-    footer { background: #02050b; color: #94a3b8; padding: 60px 0 30px; margin-top: 80px; border-top: 3px solid var(--accent-color); text-align: center; }
-    .footer-legal-base { font-size: 14px; font-weight: 700; color: #475569; }
-    .footer-legal-base a { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
+    .tag-cloud-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag-cloud-list li a { display: block; background: var(--light-bg); padding: 5px 12px; font-size: 13px; font-weight: 700; border-radius: 6px; }
+
+    /* Corporate Minimal Footer */
+    footer { background: #02050b; color: #94a3b8; padding: 40px 0; margin-top: 60px; text-align: center; font-size: 14px; font-weight: 700; border-top: 2px solid var(--accent-color); }
+    footer a { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
     ]]></b:skin>
 </head>
 
 <body>
-    <!-- Live Bulletin Running Ticker Ribbon -->
     <div class='top-bar'>
         <div class='container ticker-wrap'>
             <div class='ticker-box'>
-                <div class='ticker-title'><i class='fas fa-circle-dot'/> लाइव अपडेट</div>
+                <div class='ticker-title'><i class='fas fa-circle-dot'/> लाइव बुलेटिन</div>
                 <div class='ticker-content'>
-                    🚀 hadoti-news पोर्टल पर आपका स्वागत है! देश-विदेश की ताज़ा खबरें, महत्वपूर्ण सामान्य ज्ञान (GK), उपयोगी जानकारियां और निष्पक्ष समाचार समीक्षा।
+                    🚀 hadoti-news नेटवर्क पर आपका स्वागत है! देश-विदेश की ताज़ा खबरें, महत्वपूर्ण सामान्य ज्ञान (GK Capsule), उपयोगी जानकारियां एवं सटीक समाचार प्रभाग।
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Sticky Main Corporate Header -->
     <header>
         <div class='container header-inner'>
             <div class='logo-branding'>
@@ -151,11 +138,9 @@
         </div>
     </header>
 
-    <!-- Structural Content Engine Dynamic Area -->
     <div class='container'>
         <div class='main-wrapper'>
             
-            <!-- CENTRAL CORE POST STREAM COMPONENT -->
             <main class='main-content-pane'>
                 <b:section class='main-core-posts' id='main-core-posts' showaddelement='true'>
                     <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2'>
@@ -166,11 +151,11 @@
                                     <b:loop values='data:posts' var='post'>
                                         <article class='card'>
                                             <div class='card-thumb'>
-                                                <span class='badge'>समाचार</span>
+                                                <span class='badge'>न्यूज़ अपडेट</span>
                                                 <b:if cond='data:post.featuredImage'>
                                                     <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
                                                 <b:else/>
-                                                    <img alt='hadoti-news Stream Grid' loading='lazy' src='https://images.unsplash.com/photo-1495020689067-958852a6565d?w=600'/>
+                                                    <img alt='hadoti-news Media Hub' loading='lazy' src='https://images.unsplash.com/photo-1495020689067-958852a6565d?w=600'/>
                                                 </b:if>
                                             </div>
                                             <div class='card-content'>
@@ -179,17 +164,18 @@
                                                     <h2 class='card-title'><a expr:href='data:post.url'><data:post.title/></a></h2>
                                                     <p class='card-text'><data:post.snippet/></p>
                                                 </div>
-                                                <a class='read-btn' expr:href='data:post.url'>खबर पढ़ें <i class='fas fa-arrow-right-long'/></a>
+                                                <a class='read-btn' expr:href='data:post.url'>पूरी खबर पढ़ें <i class='fas fa-arrow-right-long'/></a>
                                             </div>
                                         </article>
                                     </b:loop>
                                 </div>
+                            
                             <b:else/>
                                 <b:loop values='data:posts' var='post'>
                                     <article class='post-body-container'>
                                         <h1 class='post-main-title'><data:post.title/></h1>
-                                        <div class='card-meta' style='margin-bottom:25px; border-bottom:1px solid rgba(0,0,0,0.06); padding-bottom:15px;'>
-                                            <span><i class='far fa-calendar-check'/> <data:post.date/></span> | <span>By hadoti-news Editor</span>
+                                        <div class='card-meta' style='margin-bottom:20px; border-bottom:1px solid rgba(0,0,0,0.06); padding-bottom:12px;'>
+                                            <span><i class='far fa-calendar-check'/> <data:post.date/></span> | <span>By hadoti-news Desk</span>
                                         </div>
                                         <div class='post-content-inner'>
                                             <data:post.body/>
@@ -198,30 +184,13 @@
                                 </b:loop>
                             </b:if>
                             
-                            <!-- OFFICIAL PARSER INCLUDES (DO NOT REMOVE OR REMOVE CONTENT FROM INSIDE) -->
-                            <b:includable id='commentDeleteIcon' var='image'><data:image.alt/></b:includable>
-                            <b:includable id='backlinkDeleteIcon' var='image'><data:image.alt/></b:includable>
-                            <b:includable id='feedLinks'><data:feedLinks.title/></b:includable>
-                            <b:includable id='status-message'><data:status-message/></b:includable>
-                            <b:includable id='empty-posts'><data:empty-posts/></b:includable>
-                            <b:includable id='comment-form' var='post'><data:post.title/></b:includable>
-                            <b:includable id='comments' var='post'><data:post.title/></b:includable>
-                            <b:includable id='manage-comments' var='post'><data:post.title/></b:includable>
-                            <b:includable id='nextprev'><data:blog.pageName/></b:includable>
-                            <b:includable id='post' var='post'><data:post.title/></b:includable>
-                            <b:includable id='postQuickEdit' var='post'><data:post.title/></b:includable>
-                            <b:includable id='shareButtons' var='post'><data:post.title/></b:includable>
-                            <b:includable id='threadedCommentForm' var='post'><data:post.title/></b:includable>
-                            <b:includable id='threadedComments' var='post'><data:post.title/></b:includable>
                         </b:includable>
                     </b:widget>
                 </b:section>
             </main>
 
-            <!-- NATIVE HIGH COMPLIANT SIDEBAR PANEL -->
             <aside class='sidebar-pane'>
                 
-                <!-- Search Widget Section -->
                 <b:section class='side-search-box' id='side-search-box' showaddelement='false'>
                     <b:widget id='BlogSearch2' locked='false' title='पोर्टल पर खोजें' type='BlogSearch' version='2'>
                         <b:includable id='main'>
@@ -238,7 +207,6 @@
                     </b:widget>
                 </b:section>
 
-                <!-- Labels Section -->
                 <b:section class='side-labels-box' id='side-labels-box' showaddelement='false'>
                     <b:widget id='Label2' locked='false' title='मुख्य श्रेणियां' type='Label' version='2'>
                         <b:includable id='main'>
@@ -254,27 +222,15 @@
                     </b:widget>
                 </b:section>
 
-                <!-- Editorial Bio Section -->
                 <b:section class='side-profile-box' id='side-profile-box' showaddelement='false'>
-                    <b:widget id='Profile2' locked='false' title='संपादकीय विभाग' type='Profile' version='2'>
+                    <b:widget id='Profile2' locked='false' title='संपादकीय प्रभाग' type='Profile' version='2'>
                         <b:includable id='main'>
                             <div class='block-widget'>
                                 <h3 class='block-title'><data:title/></h3>
                                 <div style='text-align: center;'>
-                                    <h4 style='margin-bottom:8px;'>hadoti-news Desktop</h4>
-                                    <p style='font-size:14px; color:var(--text-muted); line-height:1.5;'>सटीक समाचार, देश-विदेश की हलचल और दैनिक सामान्य ज्ञान नोट्स का विश्वसनीय ठिकाना।</p>
+                                    <h4 style='margin-bottom:6px; font-weight:800;'>hadoti-news Media</h4>
+                                    <p style='font-size:13.5px; color:var(--text-muted); line-height:1.5;'>सटीक समाचार, देश-विदेश की बड़ी हलचल और उत्कृष्ट सामान्य ज्ञान नोट्स का विश्वसनीय मंच।</p>
                                 </div>
-                            </div>
-                        </b:includable>
-                    </b:widget>
-                </b:section>
-
-                <!-- Attribution Safe Lock -->
-                <b:section class='side-meta-box' id='side-meta-box' showaddelement='false'>
-                    <b:widget id='Attribution2' locked='false' title='कॉपीराइट काउंटर' type='Attribution' version='2'>
-                        <b:includable id='main'>
-                            <div class='block-widget' style='text-align: center; font-size: 13px; color:var(--text-muted);'>
-                                <data:attribution/> Powered by Blogger.
                             </div>
                         </b:includable>
                     </b:widget>
@@ -285,19 +241,15 @@
         </div>
     </div>
 
-    <!-- Corporate Footer -->
     <footer>
         <div class='container'>
-            <div class='footer-legal-base'>
-                &amp;copy; 2026 <a href='https://www.hadoti-news.com/'>hadoti-news</a>. सर्वाधिकार सुरक्षित। Designed for Blogger Layout Engine v3.
-            </div>
+            &amp;copy; 2026 <a href='https://www.hadoti-news.com/'>hadoti-news</a> Network. सर्वाधिकार सुरक्षित। Designed for Blogger Layout Engine v3.
         </div>
     </footer>
 
-    <!-- Execution Light Scripts System -->
     <script>
         //<![CDATA[
-        // Mode Switch Logic
+        // Dark/Light Mode Interchanger Logic 
         const toggleEngineBtn = document.getElementById('dark-mode-engine-btn');
         const themeIconSymbol = toggleEngineBtn.querySelector('i');
         
